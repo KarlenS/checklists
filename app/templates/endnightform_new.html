@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<link href="https://bootswatch.com/slate/bootstrap.min.css" rel="stylesheet">
+<link href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/switch.css" rel="stylesheet">
+<head>
+  <title>VERITAS End of Night Checklist</title>
+  <link href="VERITAS_logo.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- <link rel="stylesheet" href="http://bootswatch.com/slate/bootstrap.css" media="screen">
+            <link rel="stylesheet" href="http://bootswatch.com/assets/css/bootswatch.min.css"> -->
+</head>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container">
+<div class="row">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="checklists.html">VERITAS Checklists</a>
+        </div>
+	<div class="navbar-header">
+          <ul class="nav navbar-nav">
+            <li><a href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/startnightform_new.html">Start of Night</a></li>
+            <li class="active"><a href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/endnightform_new.html">End of Night</a></li>
+          </ul>
+        </div>
+	<!--<div class="navbar-right">
+        	<a href="http://veritas.sao.arizona.edu/"><img src="VERITAS_logo.gif" width=50 /></a>
+        	<a href="http://veritas.sao.arizona.edu/"><img src="VERITAS_logo.gif" width=50 /></a>
+        	<a href="http://veritas.sao.arizona.edu/"><img src="VERITAS_logo.gif" width=50 /></a>
+        	<a href="http://veritas.sao.arizona.edu/"><img src="VERITAS_logo.gif" width=50 /></a>
+	</div>
+	-->
+</div>
+</nav>
+<div class="container-fluid">
+<form class="form-inline" role="form">
+
+        <div class="row">
+
+
+<br>
+<br>
+<br>
+		<div class="form-element-block input required">
+			<div class="form-label">
+				<label for="Observers">Observers*</label>
+			</div>
+			<div class="form-elem">
+				<input id="observers" name="Observers" type="text" size="20" value="" maxlength="20" required />
+			</div>
+		</div>
+				<!-- / input (required) -->
+				
+		<div class="form-element-block date">
+			<div class="form-label">
+				<label for="date">Date*</label>
+			</div>
+			<div class="form-elem">
+				<input id="date" name="Date" type="date" required/>
+			</div>
+		</div>
+				<!-- / date -->
+                                
+		<br>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+    50%
+  </div>
+</div>
+
+
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><strong>Control Room (before going to telescopes/trailers)</strong></div>
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+			    On control04 turn off HV and exit the program
+            <div class="material-switch pull-right">	
+			    <input id="endHVoff" name="endHVoff" type="checkbox" />
+			    <label for="endHVoff" value="endHVoff" class=label-success></label>
+            </div>
+            </li>
+            <li class="list-group-item">
+			    Announce on NORMAL radio channel that VERITAS has completed observations
+            <div class="material-switch pull-right">	
+			    <input id="endAnnounce" name="endAnnounce" type="checkbox" />
+			    <label for="endAnnounce" value="endAnnounce" class=label-success></label>
+            </div>
+            </li>
+            <li class="list-group-item">
+			On control04 send the telescopes to stow position
+            <div class="material-switch pull-right">	
+			    <input id="endStow" name="endStow" type="checkbox" />
+			    <label for="endStow" value="endStow" class=label-success></label>
+            </div>
+            </li>
+            <li class="list-group-item">
+			On control04 close the current monitor software
+            <div class="material-switch pull-right">	
+			    <input id="endIMON" name="endIMON" type="checkbox" />
+			    <label for="endIMON" value="endIMO" class=label-success></label>
+            </div>
+            </li>
+            <li class="list-group-item">
+			On control02 stop VDAQ: <code>ssh arrayctl.vts</code> <code>stopVDAQ.pl -1234</code>
+            <div class="material-switch pull-right">	
+			    <input id="endStopVDAQ" name="endStopVDAQ" type="checkbox" />
+			    <label for="endStopVDAQ" value="endStopVDAQ" class=label-success></label>
+            </div>
+            </li>
+            <li class="list-group-item">
+		    On arraymon verify that all Wiener FADC power supplies read <font color=red>np</font> (no power)	
+            <div class="material-switch pull-right">	
+			    <input id="endFADCoff" name="endFADCoff" type="checkbox" />
+			    <label for="endFADCoff" value="endFADCoff" class=label-success></label>
+            </div>
+            </li>
+            <li class="list-group-item">
+            On arrayctl turn OFF all camera fans: <code>ssh arrayctl.vts</code> <code>stop_camera_fan -a</code>
+            <div class="material-switch pull-right">	
+			    <input id="endCamFanOff" name="endCamFanOff" type="checkbox" />
+			    <label for="endCamFanOff" value="endCamFanOff" class=label-success></label>
+            </div>
+            </li>
+            </ul>
+        </div>
+     </div>
+   </div>
+
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#endT1" aria-controls="endT1" role="tab" data-toggle="tab">Telescope 1</a></li>
+    <li role="presentation"><a href="#endT2" aria-controls="endT2" role="tab" data-toggle="tab">Telescope 2</a></li>
+    <li role="presentation"><a href="#endT3" aria-controls="endT3" role="tab" data-toggle="tab">Telescope 3</a></li>
+    <li role="presentation"><a href="#endT4" aria-controls="endT4" role="tab" data-toggle="tab">Telescope 4</a></li>
+  </ul>
+
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="endT1">
+
+    <ul class="nav nav-tabs col-xs-12">
+        <li class="active"><a href="#endTel1" data-toggle="tab">Telescope</a></li>
+        <li><a href="#endTrailerT1" data-toggle="tab">Trailer</a></li>
+    </ul>
+    <div class="tab-content col-xs-12">
+        <div class="tab-pane active" id="endTel1">
+
+            <div class="col-xs-12">
+            <div class="panel panel-primary">
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+		    	Turn on shutter power and close the shutter using the remote control
+            <div class="material-switch pull-right">
+			    <input id="endT1shutterclose" name="endT1shutterclose" type="checkbox"/>
+			    <label for="endT1shutterclose"  value="endT1shutterclose" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Flip RUN/SAFE switch on to SAFE.
+            <div class="material-switch pull-right">
+			    <input id="endT1safe" name="endT1safe" type="checkbox"/>
+			    <label for="endT1safe" value="endT1safe" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Check visually that shutter is closed (both reflective strips are visible)
+            <div class="material-switch pull-right">
+			    <input id="endT1checkclosed" name="endT1checkclosed" type="checkbox"/>
+			    <label for="endT1checkclosed" value="endT1checkclosed" class="label-success"></label>
+    		</div>
+            </li>
+            <li class="list-group-item">
+			    Replace the remote control and switch off shutter power
+            <div class="material-switch pull-right">
+			    <input id="endT1shutterpoweroff" name="endT1shutterpoweroff" type="checkbox"/>
+			    <label for="endT1shutterpoweroff" value="endT1shutterpoweroff" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+            </div>
+         </div>
+    </div>
+
+        <div class="tab-pane" id="endTrailerT1">
+          <div class="col-xs-12">
+            <div class="panel panel-primary">
+            
+            <ul class="list-group">
+
+            <li class="list-group-item">
+			    Turn the key from LOCAL to OFF on both HV crates
+            <div class="material-switch pull-right">
+			    <input id="endT1hvcratesoffoffoff" name="endT1hvcrates" type="checkbox"/>
+			    <label for="endT1hvcratesoffoffoff" value="endT1hvcrates" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Turn OFF the preamp power supplies
+            <div class="material-switch pull-right">
+			    <input id="endT1preampoff" name="endT1preampoff" type="checkbox"/>
+			    <label for="endT1preampoff" value="endT1preampoff" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Check that the camera fan is off (red light should be off)
+            <div class="material-switch pull-right">
+			    <input id="endT1checkfanoff" name="endT1checkfanoff" type="checkbox" />
+			    <label for="endT1checkfanoff" value="endT1checkfanoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Check that all 4 FADC crates are powered off (no lights on)
+            <div class="material-switch pull-right">
+			    <input id="endT1checkfadcoff" name="endT1checkfadcoff" type="checkbox"/>
+			    <label for="endT1checkfadcoff" value="endT1checkfadcoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Switch off the chiller (DISABLE system and comp.) only if FADCs are off
+            <div class="material-switch pull-right">
+			    <input id="endT1chilleroff" name="endT1chilleroff" type="checkbox"/>
+			    <label for="endT1chilleroff" value="endT1chilleroff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Turn the trailer AC to 75 ºF
+            <div class="material-switch pull-right">
+		    	<input id="endT1acoff" name="endT1acoff" type="checkbox"/>
+		    	<label for="endT1acoff" value="endT1acoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Close the internal door in the trailer
+            <div class="material-switch pull-right">
+			    <input id="endT1closedoor" name="endT1closedoor" type="checkbox"/>
+			    <label for="endT1closedoor" value="endT1closedoor" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+    <div role="tabpanel" class="tab-pane" id="endT2">
+
+    <ul class="nav nav-tabs col-xs-12">
+        <li class="active"><a href="#endTel2" data-toggle="tab">Telescope</a></li>
+        <li><a href="#endTrailerT2" data-toggle="tab">Trailer</a></li>
+    </ul>
+    <div class="tab-content col-xs-12">
+        <div class="tab-pane active" id="endTel2">
+
+            <div class="col-xs-12">
+            <div class="panel panel-primary">
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+		    	Turn on shutter power and close the shutter using the remote control
+            <div class="material-switch pull-right">
+			    <input id="endT2shutterclose" name="endT2shutterclose" type="checkbox"/>
+			    <label for="endT2shutterclose"  value="endT2shutterclose" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Flip RUN/SAFE switch on to SAFE.
+            <div class="material-switch pull-right">
+			    <input id="endT2safe" name="endT2safe" type="checkbox"/>
+			    <label for="endT2safe" value="endT2safe" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Check visually that shutter is closed (both reflective strips are visible)
+            <div class="material-switch pull-right">
+			    <input id="endT2checkclosed" name="endT2checkclosed" type="checkbox"/>
+			    <label for="endT2checkclosed" value="endT2checkclosed" class="label-success"></label>
+    		</div>
+            </li>
+            <li class="list-group-item">
+			    Replace the remote control and switch off shutter power
+            <div class="material-switch pull-right">
+			    <input id="endT2shutterpoweroff" name="endT2shutterpoweroff" type="checkbox"/>
+			    <label for="endT2shutterpoweroff" value="endT2shutterpoweroff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Turn off infrared radiometers on T2
+            <div class="material-switch pull-right">
+			    <input id="endT2FIRoff" name="endT2FIRoff" type="checkbox" />
+			    <label for="endT2FIRoff" value="endT2FIRoff" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+            </div>
+         </div>
+    </div>
+
+        <div class="tab-pane" id="endTrailerT2">
+          <div class="col-xs-12">
+            <div class="panel panel-primary">
+            
+            <ul class="list-group">
+
+            <li class="list-group-item">
+			    Turn the key from LOCAL to OFF on both HV crates
+            <div class="material-switch pull-right">
+			    <input id="endT2hvcratesoffoffoff" name="endT2hvcrates" type="checkbox"/>
+			    <label for="endT2hvcratesoffoffoff" value="endT2hvcrates" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Turn OFF the preamp power supplies
+            <div class="material-switch pull-right">
+			    <input id="endT2preampoff" name="endT2preampoff" type="checkbox"/>
+			    <label for="endT2preampoff" value="endT2preampoff" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Check that the camera fan is off (red light should be off)
+            <div class="material-switch pull-right">
+			    <input id="endT2checkfanoff" name="endT2checkfanoff" type="checkbox" />
+			    <label for="endT2checkfanoff" value="endT2checkfanoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Check that all 4 FADC crates are powered off (no lights on)
+            <div class="material-switch pull-right">
+			    <input id="endT2checkfadcoff" name="endT2checkfadcoff" type="checkbox"/>
+			    <label for="endT2checkfadcoff" value="endT2checkfadcoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Switch off the chiller (DISABLE system and comp.) only if FADCs are off
+            <div class="material-switch pull-right">
+			    <input id="endT2chilleroff" name="endT2chilleroff" type="checkbox"/>
+			    <label for="endT2chilleroff" value="endT2chilleroff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Turn the trailer AC to 75 ºF
+            <div class="material-switch pull-right">
+		    	<input id="endT2acoff" name="endT2acoff" type="checkbox"/>
+		    	<label for="endT2acoff" value="endT2acoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Close the internal door in the trailer
+            <div class="material-switch pull-right">
+			    <input id="endT2closedoor" name="endT2closedoor" type="checkbox"/>
+			    <label for="endT2closedoor" value="endT2closedoor" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+    <div role="tabpanel" class="tab-pane" id="endT3">
+
+    <ul class="nav nav-tabs col-xs-12">
+        <li class="active"><a href="#endTel3" data-toggle="tab">Telescope</a></li>
+        <li><a href="#endTrailerT3" data-toggle="tab">Trailer</a></li>
+    </ul>
+    <div class="tab-content col-xs-12">
+        <div class="tab-pane active" id="endTel3">
+
+            <div class="col-xs-12">
+            <div class="panel panel-primary">
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+		    	Turn on shutter power and close the shutter using the remote control
+            <div class="material-switch pull-right">
+			    <input id="endT3shutterclose" name="endT3shutterclose" type="checkbox"/>
+			    <label for="endT3shutterclose"  value="endT3shutterclose" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Flip RUN/SAFE switch on to SAFE.
+            <div class="material-switch pull-right">
+			    <input id="endT3safe" name="endT3safe" type="checkbox"/>
+			    <label for="endT3safe" value="endT3safe" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Check visually that shutter is closed (both reflective strips are visible)
+            <div class="material-switch pull-right">
+			    <input id="endT3checkclosed" name="endT3checkclosed" type="checkbox"/>
+			    <label for="endT3checkclosed" value="endT3checkclosed" class="label-success"></label>
+    		</div>
+            </li>
+            <li class="list-group-item">
+			    Replace the remote control and switch off shutter power
+            <div class="material-switch pull-right">
+			    <input id="endT3shutterpoweroff" name="endT3shutterpoweroff" type="checkbox"/>
+			    <label for="endT3shutterpoweroff" value="endT3shutterpoweroff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Turn off infrared radiometers on T3 and screw plate on the housing
+            <div class="material-switch pull-right">
+			    <input id="endT3FIRoff" name="endT3FIRoff" type="checkbox" />
+			    <label for="endT3FIRoff" value="endT3FIRoff" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+            </div>
+         </div>
+    </div>
+
+        <div class="tab-pane" id="endTrailerT3">
+          <div class="col-xs-12">
+            <div class="panel panel-primary">
+            
+            <ul class="list-group">
+
+            <li class="list-group-item">
+			    Turn the key from LOCAL to OFF on both HV crates
+            <div class="material-switch pull-right">
+			    <input id="endT3hvcratesoffoffoff" name="endT3hvcrates" type="checkbox"/>
+			    <label for="endT3hvcratesoffoffoff" value="endT3hvcrates" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Turn OFF the preamp power supplies
+            <div class="material-switch pull-right">
+			    <input id="endT3preampoff" name="endT3preampoff" type="checkbox"/>
+			    <label for="endT3preampoff" value="endT3preampoff" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Check that the camera fan is off (red light should be off)
+            <div class="material-switch pull-right">
+			    <input id="endT3checkfanoff" name="endT3checkfanoff" type="checkbox" />
+			    <label for="endT3checkfanoff" value="endT3checkfanoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Check that all 4 FADC crates are powered off (no lights on)
+            <div class="material-switch pull-right">
+			    <input id="endT3checkfadcoff" name="endT3checkfadcoff" type="checkbox"/>
+			    <label for="endT3checkfadcoff" value="endT3checkfadcoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Switch off the chiller (DISABLE system and comp.) only if FADCs are off
+            <div class="material-switch pull-right">
+			    <input id="endT3chilleroff" name="endT3chilleroff" type="checkbox"/>
+			    <label for="endT3chilleroff" value="endT3chilleroff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Turn the trailer AC to 75 ºF
+            <div class="material-switch pull-right">
+		    	<input id="endT3acoff" name="endT3acoff" type="checkbox"/>
+		    	<label for="endT3acoff" value="endT3acoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Close the internal door in the trailer
+            <div class="material-switch pull-right">
+			    <input id="endT3closedoor" name="endT3closedoor" type="checkbox"/>
+			    <label for="endT3closedoor" value="endT3closedoor" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+    <div role="tabpanel" class="tab-pane" id="endT4">
+
+    <ul class="nav nav-tabs col-xs-12">
+        <li class="active"><a href="#endTel4" data-toggle="tab">Telescope</a></li>
+        <li><a href="#endTrailerT4" data-toggle="tab">Trailer</a></li>
+    </ul>
+    <div class="tab-content col-xs-12">
+        <div class="tab-pane active" id="endTel4">
+
+            <div class="col-xs-12">
+            <div class="panel panel-primary">
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+		    	Turn on shutter power and close the shutter using the remote control
+            <div class="material-switch pull-right">
+			    <input id="endT4shutterclose" name="endT4shutterclose" type="checkbox"/>
+			    <label for="endT4shutterclose"  value="endT4shutterclose" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Flip RUN/SAFE switch on to SAFE.
+            <div class="material-switch pull-right">
+			    <input id="endT4safe" name="endT4safe" type="checkbox"/>
+			    <label for="endT4safe" value="endT4safe" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Check visually that shutter is closed (both reflective strips are visible)
+            <div class="material-switch pull-right">
+			    <input id="endT4checkclosed" name="endT4checkclosed" type="checkbox"/>
+			    <label for="endT4checkclosed" value="endT4checkclosed" class="label-success"></label>
+    		</div>
+            </li>
+            <li class="list-group-item">
+			    Replace the remote control and switch off shutter power
+            <div class="material-switch pull-right">
+			    <input id="endT4shutterpoweroff" name="endT4shutterpoweroff" type="checkbox"/>
+			    <label for="endT4shutterpoweroff" value="endT4shutterpoweroff" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+            </div>
+         </div>
+    </div>
+
+        <div class="tab-pane" id="endTrailerT4">
+          <div class="col-xs-12">
+            <div class="panel panel-primary">
+            
+            <ul class="list-group">
+
+            <li class="list-group-item">
+			    Turn the key from LOCAL to OFF on both HV crates
+            <div class="material-switch pull-right">
+			    <input id="endT4hvcratesoffoffoff" name="endT4hvcrates" type="checkbox"/>
+			    <label for="endT4hvcratesoffoffoff" value="endT4hvcrates" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Turn OFF the preamp power supplies
+            <div class="material-switch pull-right">
+			    <input id="endT4preampoff" name="endT4preampoff" type="checkbox"/>
+			    <label for="endT4preampoff" value="endT4preampoff" class="label-success"></label>
+	    	</div>
+            </li>
+            <li class="list-group-item">
+			    Check that the camera fan is off (red light should be off)
+            <div class="material-switch pull-right">
+			    <input id="endT4checkfanoff" name="endT4checkfanoff" type="checkbox" />
+			    <label for="endT4checkfanoff" value="endT4checkfanoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Check that all 4 FADC crates are powered off (no lights on)
+            <div class="material-switch pull-right">
+			    <input id="endT4checkfadcoff" name="endT4checkfadcoff" type="checkbox"/>
+			    <label for="endT4checkfadcoff" value="endT4checkfadcoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Switch off the chiller (DISABLE system and comp.) only if FADCs are off
+            <div class="material-switch pull-right">
+			    <input id="endT4chilleroff" name="endT4chilleroff" type="checkbox"/>
+			    <label for="endT4chilleroff" value="endT4chilleroff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Turn the trailer AC to 75 ºF
+            <div class="material-switch pull-right">
+		    	<input id="endT4acoff" name="endT4acoff" type="checkbox"/>
+		    	<label for="endT4acoff" value="endT4acoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Close the internal door in the trailer
+            <div class="material-switch pull-right">
+			    <input id="endT4closedoor" name="endT4closedoor" type="checkbox"/>
+			    <label for="endT4closedoor" value="endT4closedoor" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>
+		
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><strong>Telescopes & trailers need to be double checked to reduce danger of serious damage (FADC meltdown, PMT exposure, etc)</strong></div>
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+		        All telescope and trailer items double checked by second person for T1
+            <div class="material-switch pull-right">
+			    <input id="endT1doublecheck" name="endT1doublecheck" type="checkbox"/>
+			    <label for="endT1doublecheck" value="endT1doublecheck" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+		        All telescope and trailer items double checked by second person for T2
+            <div class="material-switch pull-right">
+			    <input id="endT2doublecheck" name="endT2doublecheck" type="checkbox"/>
+			    <label for="endT2doublecheck" value="endT2doublecheck" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+		        All telescope and trailer items double checked by second person for T3
+            <div class="material-switch pull-right">
+			    <input id="endT3doublecheck" name="endT3doublecheck" type="checkbox"/>
+			    <label for="endT3doublecheck" value="endT3doublecheck" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+		        All telescope and trailer items double checked by second person for T4
+            <div class="material-switch pull-right">
+			    <input id="endT4doublecheck" name="endT4doublecheck" type="checkbox"/>
+			    <label for="endT4doublecheck" value="endT4doublecheck" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+			
+		</div>
+    </div>
+        <!--
+		<br>
+		<br>
+		<label><b>ATO telescope:</b></label>
+		<br>
+		<div class="form-element-block checkbox">
+			<label><input id="endATOstow" name="endATOstow" type="checkbox" value="endATOstow" />
+			Verify the scope is in STOW position (if not, start up Xobs and stow it from the local terminal)</label>
+		</div>
+		<br>
+		<div class="form-element-block checkbox">
+			<label><input id="endATOservosoff" name="endATOservosoff" type="checkbox" value="endATOservosoff" />
+			Turn off the two servo enable switches. ENSURE THE SERVOS ARE OFF until the next night</label>
+		</div>
+		<br>
+		<div class="form-element-block checkbox">
+			<label><input id="endATOshedclose" name="endATOshedclose" type="checkbox" value="endATOshedclose" />
+			Roll the shed back, reinsert the pins, close the door</label>
+		</div>
+		<br>
+	    -->	
+				
+		<br>
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">In the computer hardware shed (old control trailer by T4)</div>
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+			    Turn off the “T0” infrared radiometer (switch on power strip in staircase box).
+            <div class="material-switch pull-right">
+			    <input id="endT0FIRoff" name="endT0FIRoff" type="checkbox" />
+			    <label for="endT0FIRoff"  value="endT0FIRoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Put the cap back on the “T0” infrared radiometer
+            <div class="material-switch pull-right">
+			    <input id="endT0FIRcapon" name="endT0FIRcapon" type="checkbox" />
+			    <label for="endT0FIRcapon" value="endT0FIRcapon" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Put the cap back on the Allsky Cloud Monitor at "T0"
+            <div class="material-switch pull-right">
+			    <input id="endT0allskycapon" name="endT0allskycapon" type="checkbox"/>
+			    <label for="endT0allskycapon" value="endT0allskycapon" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+        </div>
+     </div>
+				
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Control Room (during telescope/trailer shutdown)</div>
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+			    On control04 choose <mark>Select Flasher Run</mark> from VAC
+            <div class="material-switch pull-right">
+			    <input id="endselectFOTN" name="endselectFOTN" type="checkbox"/>
+                <label for="endselectFOTN" value="endselectFOTN" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control04 choose <mark>End Night</mark> from VAC and exit VAC
+            <div class="material-switch pull-right">
+			    <input id="endvacendnight" name="endvacendnight" type="checkbox"/>
+                <label for="endvacendnight" value="endvacendnight" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On harvester, stop the errorArchivingDemon: <code>ssh harvester</code>  <code>./errorArchivingDemon_kill.sh</code>
+            <div class="material-switch pull-right">
+			    <input id="stopDemon" name="stopDemon" type="checkbox"/>
+                <label for="stopDemon" value="stopDemon" class="label-success"></label>
+		    </div>
+            </li>
+        <!--
+		<div class="form-element-block checkbox">
+			<label><input type="checkbox" disabled="disabled"/>
+			N/A On harvester, paste the the list of re-archived runs into the elog:
+			    <code>ssh harvester</code> ; <code>./errorArchivingDemon_nightlyElogFormat.sh</code></label>
+		</div>
+		<br>
+        -->
+            <li class="list-group-item">
+			    On control02 <code>ssh harvester</code> and run <code>nightsum</code> and put the results in the ELog
+            <div class="material-switch pull-right">
+			    <input id="endnightsum" name="endnightsum" type="checkbox"/>
+			    <label for="endnightsum" value="endnightsum" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control02 copy/paste the text runlog from the Run Log Generator into the ELog<br>
+                (Either select the text format on the website or click the <font color=darkblue>LG</font> icon on control02, which should work even if romulus is down) 
+            <div class="material-switch pull-right">
+			    <input id="endrunlog" name="endrunlog" type="checkbox"/>
+                <label for="endrunlog" value="endrunlog" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control02 send the ELog
+            <div class="material-switch pull-right">
+			    <input id="endsendelog" name="endsendelog" type="checkbox" />
+			    <label for="endsendelog" value="endsendelog" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control02 reset CFD thresholds if necessary (depending on moonlight)
+            <div class="material-switch pull-right">
+			    <input id="endCFDreset" name="endCFDreset" type="checkbox"/>
+                <label for="endCFDreset" value="endCFDreset" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control01 close the L2 trigger GUI
+            <div class="material-switch pull-right">
+			    <input id="endL2gui" name="endL2gui" type="checkbox"/>
+                <label for="endL2gui" value="endL2gui" class="label-success"></label>
+		    </div>
+            </li>
+		</div>
+	</div>
+		   
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Control Room (after telescope/trailer shutdown)</div>
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+			    On control04 verify that all four telescope interlocks are on and then exit the tracking programme
+            <div class="material-switch pull-right">
+			    <input id="endexittrk" name="endexittrk" type="checkbox"/>
+                <label for="endexittrk" value="endexittrk" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control02 verify that all four shutters are closed in the Pointing Monitor focal plane view
+            <div class="material-switch pull-right">
+			    <input id="endVPMshutterverify" name="endVPMshutterverify" type="checkbox"/>
+                <label for="endVPMshutterverify" value="endVPMshutterverify" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control02 power off T1-T4 Pointing Monitors using Power Off All
+            <div class="material-switch pull-right">
+			    <input id="endVPMoff" name="endVPMoff" type="checkbox"/>
+                <label for="endVPMoff" value="endVPMoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control02 after all Pointing Monitors have powered off, close the Pointing Monitor Control window
+            <div class="material-switch pull-right">
+			    <input id="endVPMwinclose" name="endVPMwinclose" type="checkbox"/>
+                <label for="endVPMwinclose" value="endVPMwinclose" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control01 verify that all three FIRs are powered down (windows red) and close the FIR windows
+            <div class="material-switch pull-right">
+			    <input id="endverifyFIRoff" name="endverifyFIRoff" type="checkbox" />
+                <label for="endverifyFIRoff" value="endverifyFIRoff" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    On control01 verify that the Allsky monitor lid is on and close the Allsky Monitor window
+            <div class="material-switch pull-right">
+			    <input id="endverifyallskyclosed" name="endverifyallskyclosed" type="checkbox"/>
+                <label for="endverifyallskyclosed" value="endverifyallskyclosed" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Update the telescope operation time/moon status on the whiteboard in the control room.
+            <div class="material-switch pull-right">
+			    <input id="endupdateoptime" name="endupdateoptime" type="checkbox"/>
+                <label for="endupdateoptime" value="endupdateoptime" class="label-success"></label>
+		    </div>
+            </li>
+            <li class="list-group-item">
+			    Close <strong>ALL</strong> terminals and windows on the control machines. Log off from the account. 
+            <div class="material-switch pull-right">
+			    <input id="endLogOff" name="endLogOff" type="checkbox"/>
+                <label for="endLogOff" value="endLogOff" class="label-success"></label>
+		    </div>
+            </li>
+            </ul>
+		</div>
+	</div>
+
+        <br>   
+		<br>
+
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">In the ready room</div>
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+			    If neccessary update the telescope operations time on the board in the ready room <b>(main building, basement)</b> for the next night.
+            <div class="material-switch pull-right">
+			    <input id="endupdateoptimeRR" name="endupdateoptimeRR" type="checkbox"/>
+                <label for="endupdateoptimeRR" value="endupdateoptimeRR" class="label-success"></label>
+		    </div>
+            </li>
+		</div>
+	</div>
+
+		<br>
+		<button type="submit" class="btn btn-default">Submit</button>
+
+				<!-- / submit -->
+				
+		<button type="reset" class="btn btn-default">Reset</button>
+				<!-- / reset -->
+	</div>
+</form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
