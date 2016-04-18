@@ -2,6 +2,10 @@
  * Progress bars with centered text
  */
 
+body{
+    position: relative;
+}
+
 .progress {
     position: relative;
     height: 20px;

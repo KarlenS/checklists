@@ -10,7 +10,10 @@
   <link href="VERITAS_logo.ico" rel="shortcut icon" type="image/x-icon" />
   <!--  <link rel="stylesheet" href="http://bootswatch.com/slate/bootstrap.css" media="screen">
         <link rel="stylesheet" href="http://bootswatch.com/assets/css/bootswatch.min.css"> -->
+
+
 </head>
+<!--
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 <div class="container">
   <div class="row">
@@ -32,41 +35,38 @@
   </div>
   </div>
 </nav>
-
-
-<body>
-
-<div class="container-fluid">
-<form class="form-inline" role="form" id="checkform">
-<br>
-<br>
-<br>
-<!--
-	<div class="row">
-					<div class="form-element-block input required">
-						<div class="form-label">
-							<label for="Observers">Observers*</label>
-						</div>
-					 	<div class="form-elem">
-                                                	<input id="Observers" name="Observers" type="text" size="20" value="" required />
-                                        	</div>
-					</div>
 -->
-				<!-- / input (required) -->
-	<!--			
-					<div class="form-element-block date">
-						<div class="form-label">
-							<label for="Date">Date*</label>
-						</div>
-						<div class="form-elem">
-							<input id="Date" name="Date" type="date" required/>
-						</div>
-					</div>
-    -->
-				<!-- / date -->
+
+
+<body data-spy="scroll" data-target="#navtimes" data-offset="50"> 
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navtimes">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="#section-start"><strong>Start of Night Checklist</strong></a>
+        </div>
+  <div class="navbar-header">
+          <ul class="nav navbar-nav">
+            <li><a href="#section-90min">90 MINUTES</a></li>
+            <li><a href="#section-75min">75 MINUTES</a></li>
+            <li><a href="#section-45min">45 MINUTES</a></li>
+            <li><a href="#section-20min">20 MINUTES</a></li>
+            <li><a href="#section-startup">STARTUP</a></li>
+          </ul>
+  </div>
+</div>
+
+<div class="container-fluid" id="section-start">
+<form class="form-inline" role="form" id="checkform">
 
 <nav class="navbar navbar-fixed-bottom" role="navigation">
-<div class="container">
+<div class="container-fluid"> 
 
 <div class="progress">
     <div class="progress-bar progress-bar-striped active" id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height: 50;">
@@ -76,10 +76,9 @@
 </div>
 </nav>
 
+<div id="section-90min">
+    <h1>NO LATER THAN 90 MINUTES BEFORE STARTUP</h1>
 
-<b>NO LATER THAN 90 MINUTES BEFORE STARTUP</b>
-<br>
-<br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#90minT1" aria-controls="90minT1" role="tab" data-toggle="tab"><strong>Telescope 1</strong></a></li>
@@ -729,13 +728,10 @@
 			            </div>	
 			        </div>	
 			    </div>	
+</div>
 				
-				<br>
-				<br>
-				<br>
-                                <b>NO LATER THAN 75 MINUTES BEFORE STARTUP</b>
-				<br>
-				<br>
+<div id="section-75min">
+                                <h1>NO LATER THAN 75 MINUTES BEFORE STARTUP</h1>
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
                                 <div class="panel-heading"><strong>Control Room: Control02 Computer</strong></div>
@@ -930,11 +926,12 @@
                                 </div>
                              </div>
                           </div>
-
+</div>
 				<br>
 				<br>
 				<br>
-				<b>NO LATER THAN 45 MINUTES BEFORE STARTUP</b>
+<div id="section-45min">
+    <h1>NO LATER THAN 45 MINUTES BEFORE STARTUP</h1>
 				<br>
 				<br>
 
@@ -1030,13 +1027,10 @@
                                      </div>
                                   </div>
                                </div>
+</div>
 			                        	
-				<br>
-				<br>
-				<br>
-				<b>NO LATER THAN 20 MINUTES BEFORE STARTUP</b>
-				<br>
-				<br>
+<div id="section-20min">
+				<h1>NO LATER THAN 20 MINUTES BEFORE STARTUP</h1>
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
                                 <div class="panel-heading"><strong>Control Room</strong></div>
@@ -1067,7 +1061,6 @@
                                 </div>
                              </div>
                           </div>
-                                <br> 
 
   <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#20minTel1" aria-controls="20minTel1" role="tab" data-toggle="tab"><strong>Telescope 1</strong></a></li>
@@ -1321,7 +1314,7 @@
                             </div>
                        </div>
                   </div>
-				
+</div>	
 				<br>
 				<br>
 				<br>
@@ -1339,70 +1332,67 @@
 				<br>
 				<br>
 				<br>
-				<br>
-				<br>
-				<b>STARTUP</b>
-				<br>
-				<br>
-
+<div id="section-startup">
+	<h1>STARTUP</h1>
                 
-               <div class="col-xs-12">
-                    <div class="panel panel-primary">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
 
-                                <ul class="list-group">
+            <ul class="list-group">
 
-                                <li class="list-group-item">
+                            <li class="list-group-item">
                                         Final check: outside - is the sun down / basecamp lights out?
                                 <div class="material-switch pull-right">
                                         <input id="0minfinalcheck" name="0minfinalcheck" type="checkbox" />
                                         <label for="0minfinalcheck"  value="0minfinalcheck" class="label-success"></label>
                                 </div>
-                                </li>
-                                <li class="list-group-item">
+                            </li>
+                            <li class="list-group-item">
                                         Slew to zenith (85º), then start slewing to the first source of the night. You want to be on target and tracking before astronomical twilight.
                                 <div class="material-switch pull-right">
                                         <input id="0minzenith" name="0minzenith" type="checkbox" />
                                         <label for="0minzenith" value="0minzenith" class="label-success"></label>
                                 </div>
-                                </li>
-                                <li class="list-group-item">
+                            </li>
+                            <li class="list-group-item">
                                         Check that the 2 main radios in the Control Room are respectively on the "Normal"  and "VERITAS" bands
                                 <div class="material-switch pull-right">
                                         <input id="0minradiochans" name="0minradiochans" type="checkbox"/>
                                         <label for="0minradiochans" value="0minradiochans" class="label-success"></label>
                                 </div>
-                                </li>
-                                <li class="list-group-item">
+                            </li>
+                            <li class="list-group-item">
                                         Make sure the volumes are set appropriately (we turn it down during the day)
                                 <div class="material-switch pull-right">
                                         <input id="0minradiovolume" name="0minradiovolume" type="checkbox"/>
                                         <label for="0minradiovolume" value="0minradiovolume" class="label-success"></label>
                                 </div>
-                                </li>
-                                <li class="list-group-item">
+                            </li>
+                            <li class="list-group-item">
                                         Announce over the radio that VERITAS is turning on
                                 <div class="material-switch pull-right">
                                         <input id="0minannounce" name="0minannounce" type="checkbox"/>
                                         <label for="0minannounce" value="0minannounce" class="label-success"></label>
                                 </div>
-                                </li>
-                                <li class="list-group-item">
+                            </li>
+                            <li class="list-group-item">
                                         Turn the HV on in hvac (PMT->All On), watch the current monitors.</label>
                                 <div class="material-switch pull-right">
                                         <input id="0minpmton" name="0minpmton" type="checkbox"/>
                                         <label for="0minpmton" value="0minpmton" class="label-success"></label>
                                 </div>
-                                </li>
-                                <li class="list-group-item">
+                            </li>
+                            <li class="list-group-item">
                                         During first run, perform a <a href=https://veritas.sao.arizona.edu/wiki/index.php/During_Night_Checklist>During Night checklist</a>
                                 <div class="material-switch pull-right">
                                         <input id="0minnightcheck" name="0minnightcheck" type="checkbox"/>
                                         <label for="0minnightcheck" value="0minnightcheck" class="label-success" ></label>
                                 </div>
-                                </li>
-                                </ul>
-                                </div>
-                        </div>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+</div>
 				
                                 <br> 
 				<button type="submit" id="submit" class="btn btn-default">Submit</button>
@@ -1415,24 +1405,6 @@
                                 <br> 
                                 <br> 
                                 <br> 
-<!--
-  <div class="bs-example tooltip-demo">
-    <div class="bs-example-tooltips">
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-        Popover on left
-      </button>
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-        Popover on top
-      </button>
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-        Popover on bottom
-      </button>
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-        Popover on right
-      </button>
-    </div>
-  </div>-->
-
 
 
 

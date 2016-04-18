@@ -1,4 +1,5 @@
 var main = function() {
+
     var getMessage = function (i) {
     var msgs = ['Another one!',
                 'You smart.',
