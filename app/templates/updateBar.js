@@ -1,5 +1,7 @@
 var main = function() {
 
+    $('body').scrollspy({ target: '#navtimes' });
+
     var getMessage = function (i) {
     var msgs = ['Another one!',
                 'You smart.',

@@ -1,10 +1,12 @@
+body{
+    position: relative;
+    padding-top: 70px;
+}
+
 /**
  * Progress bars with centered text
  */
 
-body{
-    position: relative;
-}
 
 .progress {
     position: relative;
