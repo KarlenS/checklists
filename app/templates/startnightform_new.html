@@ -6,8 +6,8 @@
 <link href="https://bootswatch.com/slate/bootstrap.min.css" rel="stylesheet">
 <link href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/switch.css" rel="stylesheet"> 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css" />
-  <title>VERITAS Start of Night Checklist</title>
-  <link href="VERITAS_logo.ico" rel="shortcut icon" type="image/x-icon" />
+<title>VERITAS Start of Night Checklist</title>
+<link href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/verimages/VERITAS_logo.ico" rel="shortcut icon" type="image/x-icon" />
   <!--  <link rel="stylesheet" href="http://bootswatch.com/slate/bootstrap.css" media="screen">
         <link rel="stylesheet" href="http://bootswatch.com/assets/css/bootswatch.min.css"> -->
 
@@ -38,9 +38,11 @@
 -->
 
 
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navtimes">
+<div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse">
+          <button type="button" class="navbar-toggle">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -49,7 +51,7 @@
 
           <a class="navbar-brand" href="#section-start"><strong>Start of Night Checklist</strong></a>
         </div>
-  <div class="navbar-header">
+    <div class="navbar-header">
           <ul class="nav navbar-nav">
             <li><a href="#section-90min">90 MINUTES</a></li>
             <li><a href="#section-75min">75 MINUTES</a></li>
@@ -57,20 +59,30 @@
             <li><a href="#section-20min">20 MINUTES</a></li>
             <li><a href="#section-startup">STARTUP</a></li>
           </ul>
-  </div>
+     </div>
+          <ul class="nav navbar-nav navbar-right">
+          <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span> Other Checklists<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/endnightform"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> End of Night Checklist</font></strong></a></li>
+          <li><a href="https://veritas.sao.arizona.edu/wiki/index.php/During_Night_Checklist"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> During Night Checklist</font></strong></a></li>
+        </ul>
+        </li>
+          </ul>
+</div>
 </nav>
+
+
 
 <body data-spy="scroll" data-target="#navtimes"> 
 
-<div class="container-fluid" id="section-start">
+<div class="container-fluid section" id="section-start">
 <form class="form-inline" role="form" id="checkform">
 
 
-<br>
-<br>
-<br>
     <h2><mark>NO LATER THAN 90 MINUTES BEFORE STARTUP</mark></h2>
-<h5 id="section-90min">
+<div id="section-90min" class="section">
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -667,10 +679,10 @@
 			            </div>	
 			        </div>	
 			    </div>	
-</h5>
+</div>
 				
                                 <h2><mark>NO LATER THAN 75 MINUTES BEFORE STARTUP</mark></h2>
-<h5 id="section-75min">
+<div id="section-75min" class="section">
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
                                 <div class="panel-heading"><strong>Control Room: Control02 Computer</strong></div>
@@ -833,15 +845,15 @@
                                 </div>
                                 </li>
                                 <li class="list-group-item"> 
-                                        In the "Configuration" tab of the GUI, check that all pixels in each telescope are either inverted and enabled or un-inverted and disabled. This can be done by clicking the "Refresh All Pixels" button.  All pixels should be either green or black.  <b>There should be no pixels that are inverted and disabled (<font color=blue>blue</font>)</b>.
+                                        In the "Configuration" tab of the GUI, check that all pixels in each telescope are either inverted and enabled or un-inverted and disabled. This can be done by clicking the "Refresh All Pixels" button.  All pixels should be either green or black.  <b>There should be no pixels that are inverted and disabled (<font color=darkblue>blue</font>)</b>.
                                 <div class="material-switch pull-right">
                                         <input id="75minpixstatus" name="75minpixstatus" type="checkbox"/>
                                         <label for="75minpixstatus"  value="75minpixstatus" class="label-success"></label>
                                 </div>
                                 </li>
                                 <li class="list-group-item"> 
-                                        Check that there are no stuck on pixels by clicking the "Check for triggered/stuck pixels" button in the "Configuration" tab. Any pixels that show up as red should be disabled and un-inverted.<br>
-					        Note: If the FADCs are not powered on, all pixels will appear red.</label>
+                                        Check that there are no stuck on pixels by clicking the "Check for triggered/stuck pixels" button in the "Configuration" tab. Any pixels that show up as <font color=red>red</font> should be disabled and un-inverted.<br>
+					        <font color=red>Note: If the FADCs are not powered on, all pixels will appear red.</font></label>
                                 <div class="material-switch pull-right">
                                         <input id="75minpixstuck" name="75minpixstuck" type="checkbox"/>
                                         <label for="75minpixstuck" value="75minpixstuck" class="label-success"></label>
@@ -865,12 +877,12 @@
                                 </div>
                              </div>
                           </div>
-</h5>
+</div>
 				<br>
 				<br>
 				<br>
     <h2><mark>NO LATER THAN 45 MINUTES BEFORE STARTUP</mark></h2>
-                <h5 id="section-45min">
+                <div id="section-45min" class="section">
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
                                 <div class="panel-heading"><strong>Trailers</strong></div>
@@ -963,9 +975,9 @@
                                      </div>
                                   </div>
                                </div>
-                               </h5>             	
+                               </div>             	
 				<h2><mark>NO LATER THAN 20 MINUTES BEFORE STARTUP</mark></h2>
-                    <h5 id="section-20min">
+                    <div id="section-20min" class="section">
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
                                 <div class="panel-heading"><strong>Control Room</strong></div>
@@ -1249,7 +1261,7 @@
                             </div>
                        </div>
                   </div>
-</h5>	
+</div>	
 				<br>
 				<br>
 				<br>
@@ -1268,7 +1280,7 @@
 				<br>
 				<br>
 	<h2><mark>STARTUP</mark></h2>
-<h5 id="section-startup">
+<div id="section-startup">
                 
     <div class="col-xs-12">
         <div class="panel panel-primary">
@@ -1327,7 +1339,7 @@
                         </ul>
                     </div>
             </div>
-</h5>
+</div>
 				
                                 <br> 
 				<button type="submit" id="submit" class="btn btn-default">Submit</button>
@@ -1406,17 +1418,17 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 <script src="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/updateBar.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" charset="utf-8">
     var socket;
     var value;
     var width;
     $(document).ready(function(){
-        socket = io.connect('http://' + document.domain + ':' + location.port + '/startnightform');
+        socket = io.connect('http://' + document.domain + ':' + location.port + '/');
         socket.on('connect', function() {
             socket.emit('joined', {});
         });
@@ -1462,7 +1474,7 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
                 socket.disconnect();
 
                 // go back to the login page
-                window.location.href = "{{ url_for('main.index') }}";
+                window.location.href = "{{ url_for('main.checklists') }}";
             });
         }
 

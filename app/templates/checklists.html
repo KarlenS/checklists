@@ -1,3 +1,4 @@
+<html>
 <link href="https://bootswatch.com/cerulean/bootstrap.min.css" rel="stylesheet">
 <head>
   <title>VERITAS End of Night Checklist</title>
@@ -15,17 +16,41 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/checklists.html">VERITAS Checklists</a>
+          <a class="navbar-brand" href="/">VERITAS Checklists</a>
         </div>
         <div class="navbar-header">
           <ul class="nav navbar-nav">
-            <li><a href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/startnightform_new.html">Start of Night</a></li>
-            <li><a href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/endnightform_new.html">End of Night</a></li>
+            <li><a href="/startnightform">Start of Night</a></li>
+            <li><a href="/endnightform">End of Night</a></li>
           </ul>
         </div>
 </div>
 </nav>
-<div class="row-fluid">
-    <div class="row"><a href="https://www.youtube.com/watch?v=3GasdhXLXYA"><img src="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/verimages/test2.png" alt="header" /></a></div>
-</div>
 
+<body>
+<div class="row-fluid">
+    <div class="col-md-8"><a href="https://www.youtube.com/watch?v=3GasdhXLXYA"><img src="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/verimages/test2.png" alt="header" /></a></div>
+<!--
+    <div class="col-md-4">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <form class="form-inline" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.name.label }}: {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br>
+            {{ form.room.label }}: {{ form.room() }} {% for error in form.room.errors %}{{ error }}{% endfor %}<br>
+            {{ form.submit() }}
+        </form>
+    </div>
+-->
+</div>
+</body>
+</html>
