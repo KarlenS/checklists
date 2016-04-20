@@ -1470,7 +1470,13 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
         socket = io.connect('http://' + document.domain + ':' + location.port + '/');
         socket.on('connect', function() {
             socket.emit('joined', {});
+            
+            setTimeout(function(){
+                width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./126.;
+                socket.emit('updatebar',{bar: width});
+            }, 500);
         });
+
 
         $(':checkbox').change(function(data) {
             text =  $(this).attr('id');
@@ -1483,7 +1489,10 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
                 socket.emit('uncheck',{msg: text});
                 width -= 100./126.;
             }
+            
+            socket.emit('updatebar',{bar: width});
                 
+        });
 
         socket.on('message', function(data) {
                 $(data.msg).prop('checked',true);
@@ -1493,12 +1502,10 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
                 $(data.msg).prop('checked',false);
 
         });
-        socket.emit('updatebar',{bar: width});
             
-        });
         socket.on('pbar', function(data) {
                 
-                value = Math.floor(128./100.*data.bar);
+                value = Math.floor(126./100.*data.bar);
                 $("#progress-bar")
                 .css("width", data.bar + "%")
                 .attr("aria-valuenow", data.bar)
