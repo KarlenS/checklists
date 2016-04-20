@@ -1,7 +1,6 @@
 from pymongo import MongoClient
-import datetime
 
-class MdbQuery(object):
+class Mdb(object):
 
     def __init__(self,observer="karlen"):
         self.client = MongoClient()
@@ -17,8 +16,8 @@ class MdbQuery(object):
         result = self.db.checkbox.update_one({"box": "90mint1pedlights"},{"$set": { "state": False },"$currentDate":{"date": True} })
 
     def insertMdb(self, doc):
-        dt =  datetime.datetime.utcnow()
-        result = db.checkbox.insert_one({"observer": self.observer, "date": dt, "box": "90mint1pedlights", "state": True})
+        result = self.db.checkbox.insert_one(doc)
+        print result
 
     def deleteMdbDoc(self, condition):
         result = self.db.delete_one(condition)

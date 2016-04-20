@@ -1485,11 +1485,11 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
             }
                 
 
-        socket.on('unmessage', function(data) {
+        socket.on('message', function(data) {
                 $(data.msg).prop('checked',true);
 
         });
-        socket.on('message', function(data) {
+        socket.on('unmessage', function(data) {
                 $(data.msg).prop('checked',false);
 
         });
