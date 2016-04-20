@@ -7,8 +7,8 @@
 <link href="https://bootswatch.com/slate/bootstrap.min.css" rel="stylesheet">
 <link href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/switch.css" rel="stylesheet"> 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css" />
-<title>VERITAS Start of Night Checklist</title>
 <link href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/verimages/VERITAS_logo.ico" rel="shortcut icon" type="image/x-icon" />
+<title>VERITAS Start of Night Checklist</title>
   <!--  <link rel="stylesheet" href="http://bootswatch.com/slate/bootstrap.css" media="screen">
         <link rel="stylesheet" href="http://bootswatch.com/assets/css/bootswatch.min.css"> -->
 
@@ -83,6 +83,44 @@
 
 
     <h2><mark>NO LATER THAN 90 MINUTES BEFORE STARTUP</mark></h2>
+
+<!--
+<script type="text/javascript" charset="utf-8">
+function updateClock ( )
+    {
+    var currentTime = new Date ( );
+    var currentHours = currentTime.getHours ( );
+    var currentMinutes = currentTime.getMinutes ( );
+    var currentSeconds = currentTime.getSeconds ( );
+
+    // Pad the minutes and seconds with leading zeros, if required
+    currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+    currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+    // Choose either "AM" or "PM" as appropriate
+    var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+
+    // Convert the hours component to 12-hour format if needed
+    currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+
+    // Convert an hours component of "0" to "12"
+    currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+
+    // Compose the string for display
+    var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+    
+    
+    $("#clock").html(currentTimeString);
+        
+ }
+
+$(document).ready(function()
+{
+   setInterval('updateClock()', 1000);
+});
+</script>
+
+-->
 <div id="section-90min" class="section">
 
   <!-- Nav tabs -->
