@@ -50,7 +50,7 @@ def uncheck(message):
     emit('unmessage', {'msg': sendID}, room=room)
 
     db = Mdb()
-    db.updateMdbBox(message['msg'],False)
+    db.updateMdbBox(message['msg'],False,date)
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False,  "session": date, "comment": ""})
     print "EMITTING uncheck for", sendID
 
