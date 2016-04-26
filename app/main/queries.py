@@ -6,7 +6,7 @@ class Mdb(object):
     def __init__(self,observer="observer"):
         """initializes the database object with class variables 
         for the database and the checkbox collection"""
-        self.client = MongoClient(host="mongo", port=27017)
+        self.client = MongoClient()
         self.db = self.client['checklist']
         self.col = self.db.checkbox
         self.observer = observer
