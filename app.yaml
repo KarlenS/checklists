@@ -1,0 +1,9 @@
+runtime: custom
+vm: true
+api_version: 1
+
+services:
+- docker
+script:
+- docker build -t webcheck .
+- docker-compose up -d 
