@@ -9,10 +9,11 @@ RUN apt-get update && apt-get install -y mongodb-org supervisor
 
 RUN apt-get update && apt-get install -y mongodb-org mongodb-org-server mongodb-org-shell mongodb-org-mongos mongodb-org-tools
 
-# Create the MongoDB data directory
+# Create the MongoDB and supervisor directory
 RUN mkdir -p /data/db /var/log/supervisor
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 
 EXPOSE 27017
 

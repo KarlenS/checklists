@@ -18,7 +18,9 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navtimes">
 <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle">
+            <button type="button" class="navbar-toggle"
+                data-toggle = "collapse" data-target = "#end-navbar-collapse" >
+
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -27,18 +29,18 @@
 
           <a class="navbar-brand" href="#section-start"><strong>End of Night Checklist</strong></a>
         </div>
-    <div class="navbar-header">
-     </div>
+    <div class="collapse navbar-collapse" id = "end-navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-          <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
-          <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span> Other Checklists<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="/startnightform"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> Start of Night Checklist</font></strong></a></li>
-          <li><a href="https://veritas.sao.arizona.edu/wiki/index.php/During_Night_Checklist"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> During Night Checklist</font></strong></a></li>
-        </ul>
-        </li>
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span> Other Checklists<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/startnightform"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> Start of Night Checklist</font></strong></a></li>
+                    <li><a href="https://veritas.sao.arizona.edu/wiki/index.php/During_Night_Checklist"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> During Night Checklist</font></strong></a></li>
+                </ul>
+            </li>
           </ul>
+    </div>
 </div>
 </nav>
 
@@ -855,7 +857,13 @@
         socket = io.connect('http://' + document.domain + ':' + location.port + '/');
         socket.on('connect', function() {
             socket.emit('joined', {});
+
+            setTimeout(function(){
+                width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./77.;
+                socket.emit('updatebar',{bar: width});
+            }, 500);
         });
+
 
         $(':checkbox').change(function(data) {
             text =  $(this).attr('id');
@@ -869,17 +877,19 @@
                 width -= 100./77.;
             }
                 
+            socket.emit('updatebar',{bar: width});
 
-        socket.on('unmessage', function(data) {
+        });
+
+        socket.on('message', function(data) {
                 $(data.msg).prop('checked',true);
 
         });
-        socket.on('message', function(data) {
+        socket.on('unmessage', function(data) {
                 $(data.msg).prop('checked',false);
 
         });
-        socket.emit('updatebar',{bar: width});
-        });
+
         socket.on('pbar', function(data) {
                 
                 value = Math.floor(77./100.*data.bar);

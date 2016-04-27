@@ -36,7 +36,7 @@ def check(message):
 
     db = Mdb()
     db.updateMdbBox(message['msg'],True,date)
-    #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": True, "session": date, "comment": ""})
+    #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False, "session": date, "comment": ""})
     print "EMITTING check for",sendID
 
 
