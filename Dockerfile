@@ -14,7 +14,7 @@ RUN mkdir -p /data/db
 
 EXPOSE 27017
 
-ENTRYPOINT ["/usr/bin/mongod"]
+#ENTRYPOINT ["/usr/bin/mongod"]
 
 RUN apt-get install -y vim
 
@@ -34,3 +34,6 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8080
 EXPOSE 5000
+
+
+CMD ["python", "checklists.py", "&"]
