@@ -860,7 +860,7 @@
 
             setTimeout(function(){
                 width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./77.;
-                socket.emit('updatebar',{bar: width});
+                socket.emit('updatebare',{bar: width});
             }, 500);
         });
 
@@ -877,7 +877,7 @@
                 width -= 100./77.;
             }
                 
-            socket.emit('updatebar',{bar: width});
+            socket.emit('updatebare',{bar: width});
 
         });
 
@@ -890,7 +890,7 @@
 
         });
 
-        socket.on('pbar', function(data) {
+        socket.on('pbare', function(data) {
                 
                 value = Math.floor(77./100.*data.bar);
                 $("#progress-bar-end")

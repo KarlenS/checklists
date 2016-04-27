@@ -1474,7 +1474,7 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
             
             setTimeout(function(){
                 width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./126.;
-                socket.emit('updatebar',{bar: width});
+                socket.emit('updatebars',{bar: width});
             }, 500);
         });
 
@@ -1491,7 +1491,7 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
                 width -= 100./126.;
             }
             
-            socket.emit('updatebar',{bar: width});
+            socket.emit('updatebars',{bar: width});
                 
         });
 
@@ -1504,7 +1504,7 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
 
         });
             
-        socket.on('pbar', function(data) {
+        socket.on('pbars', function(data) {
                 
                 value = Math.floor(126./100.*data.bar);
                 $("#progress-bar")

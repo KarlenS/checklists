@@ -54,13 +54,22 @@ def uncheck(message):
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False,  "session": date, "comment": ""})
     print "EMITTING uncheck for", sendID
 
-@socketio.on('updatebar', namespace='/')
+@socketio.on('updatebars', namespace='/')
 def updatebar(message):
     """Sent by a client when the user checks a box.
     The progress bar is updated for everyone."""
     room = '1' 
     sendBar = message['bar']
-    emit('pbar', {'bar': sendBar}, room=room)
+    emit('pbars', {'bar': sendBar}, room=room)
+    print "EMITTING new bar value for", sendBar
+
+@socketio.on('updatebare', namespace='/')
+def updatebar(message):
+    """Sent by a client when the user checks a box.
+    The progress bar is updated for everyone."""
+    room = '1' 
+    sendBar = message['bar']
+    emit('pbare', {'bar': sendBar}, room=room)
     print "EMITTING new bar value for", sendBar
 
 @socketio.on('left', namespace='/')
