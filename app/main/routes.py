@@ -9,8 +9,8 @@ def checklists():
     form = LoginForm()
     if form.validate_on_submit():
         session['name'] = form.name.data
-        session['room'] = '1'
         session['date'] = str(form.date.data)
+        session['room'] = session['date']
         return redirect(url_for('.startnightform'))
     elif request.method == 'GET':
         form.name.data = session.get('name', '')
@@ -24,8 +24,8 @@ def startnightform():
     """Chat room. The user's name and room must be stored in
     the session."""
     name = session.get('name', '')
-    room = '1'
     date = session.get('date', '')
+    room = date
     if name == '' or room == '' or date == '':
         return redirect(url_for('.checklists'))
     return render_template('startnightform_new.html', name=name, room=room, date=date)
@@ -35,8 +35,8 @@ def endnightform():
     """Chat room. The user's name and room must be stored in
     the session."""
     name = session.get('name', '')
-    room = '1'
     date = session.get('date', '')
+    room = date
     if name == '' or room == '' or date == '':
         return redirect(url_for('.checklists'))
     return render_template('endnightform_new.html', name=name, room=room, date=date)

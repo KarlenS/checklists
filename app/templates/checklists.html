@@ -1,7 +1,7 @@
 <html>
 <link href="https://bootswatch.com/cerulean/bootstrap.min.css" rel="stylesheet">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, target-densitydpi=high-dpi">
   <title>VERITAS End of Night Checklist</title>
   <link href="VERITAS_logo.ico" rel="shortcut icon" type="image/x-icon" />
    <!-- <link rel="stylesheet" href="http://bootswatch.com/slate/bootstrap.css" media="screen">
@@ -37,7 +37,7 @@
 <div class="row-fluid">
     <div class="text-center"><a href="https://www.youtube.com/watch?v=3GasdhXLXYA"><img src="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/verimages/test.png" alt="header" /></a></div>
     <div class="text-center">
-        <form class="form-inline" method="POST">
+        <form class="form-inline" method="POST" autocomplete="off">
             {{ form.hidden_tag() }}
             {{ form.name.label }}: {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br>
             {{ form.date.label }}: {{ form.date(class="datepicker") }} {% for error in form.date.errors %}{{ error }}{% endfor %}<br>

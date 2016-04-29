@@ -80,7 +80,7 @@
 <body data-spy="scroll" data-target="#navtimes"> 
 
 <div class="container-fluid section" id="section-start">
-<form class="form-inline" role="form" id="checkform">
+<form class="form-inline" role="form" id="checkform" autocomplete="off">
 
 
     <h2><mark>NO LATER THAN 90 MINUTES BEFORE STARTUP</mark></h2>
@@ -1514,16 +1514,21 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
 
         });
 
+        //socket.on('disconnect', function() {
+        //    socket.emit('left', {});
+        //    
+        //});
+
     });
 
-        function leave_room() {
-            socket.emit('left', {}, function() {
-                socket.disconnect();
+        //function leave_room() {
+        //    socket.emit('left', {}, function() {
+        //        socket.disconnect();
 
                 // go back to the login page
-                window.location.href = "{{ url_for('main.checklists') }}";
-            });
-        }
+        //        window.location.href = "{{ url_for('main.checklists') }}";
+        //    });
+        //}
 
 
 </script>
