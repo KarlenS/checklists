@@ -11,6 +11,10 @@ class Mdb(object):
         self.col = self.db.checkbox
         self.observer = observer
 
+    def close_connection(self):
+        print "Closing connection"
+        self.client.close()
+
     def queryMdb(self, date, observer):
         """takes the session/date and returns all documents for that session.
         If no documents exist for that session, ues cloneMdbTemplate to create

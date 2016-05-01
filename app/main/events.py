@@ -6,6 +6,7 @@ from .. import socketio
 import datetime
 from time import sleep
 
+db = Mdb()
 
 @socketio.on('joined', namespace='/')
 def joined(message):
@@ -15,9 +16,8 @@ def joined(message):
     room = date 
     observer = session.get('name') 
     join_room(room)
-    emit('status', {'msg': observer + ' has entered the room.'}, room=room)
+    emit('status', {'msg': room}, room=room)
     print "JUST LOADED INTO", room
-    db = Mdb()
     current_state = db.queryMdb(date, observer)
     for doc in current_state:
         sendID =  '#'+doc['box']
@@ -35,7 +35,7 @@ def check(message):
     sendID = '#'+message['msg'] 
     emit('message', {'msg': sendID}, room=room)
 
-    db = Mdb()
+#    db = Mdb()
     db.updateMdbBox(message['msg'],True,date)
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False, "session": date, "comment": ""})
     print "EMITTING check for",sendID, room
@@ -50,7 +50,7 @@ def uncheck(message):
     sendID = '#' + message['msg']
     emit('unmessage', {'msg': sendID}, room=room)
 
-    db = Mdb()
+#    db = Mdb()
     db.updateMdbBox(message['msg'],False,date)
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False,  "session": date, "comment": ""})
     print "EMITTING uncheck for", sendID, room
@@ -74,11 +74,13 @@ def updatebar(message):
     print "EMITTING new bar value for", sendBar, room
 
 
-#@socketio.on('left', namespace='/')
-#def left(message):
-#    """Sent by clients when they leave a room.
-#    A status message is broadcast to all people in the room."""
-#    room = session.get('date') 
-#    leave_room(room)
+@socketio.on('left', namespace='/')
+def left(message):
+    """Sent by clients when they leave a room.
+    A status message is broadcast to all people in the room."""
+    print "THE DATE THAT WE'RE PASSING: ", message['msg']
+    room = session.get('date') 
+    leave_room(room)
+    db.close_connection()
     #emit('status', {'msg': session.get('name') + ' has left the room.'}, room=room)
 
