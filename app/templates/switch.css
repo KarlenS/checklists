@@ -8,6 +8,7 @@
 body{
     position: relative;
     padding-top: 70px;
+
 }
 
 /**
@@ -20,8 +21,12 @@ body{
     height: 30px;
 }
 
-.progress span {
+.progress-font-size {
     padding-top:5px;
+    font-size: 20px;
+}
+
+.progress span {
     position: absolute;
     display: block;
     font-size: 20px;

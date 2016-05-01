@@ -24,6 +24,7 @@ var main = function() {
             return msgs[i];
         };
 
+/*
     $('input').on('click', function(){
 
         toastr.options = {
@@ -31,19 +32,18 @@ var main = function() {
         "debug": false,
         "newestOnTop": false,
         "progressBar": false,
-        "positionClass": "toast-bottom-full-width",
+        "positionClass": "toast-top-right",
         "preventDuplicates": false,
         "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "2000",
-        "extendedTimeOut": "1000",
+        "showDuration": "1000",
+        "hideDuration": "2000",
+        "timeOut": "3000",
+        "extendedTimeOut": "2000",
         "showEasing": "swing",
         "hideEasing": "linear",
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
         }   
-
 
     if(this.checked){
       var i = Math.floor((Math.random() * 15));
@@ -56,14 +56,13 @@ var main = function() {
     }
     //if(value == 126) 
 
-
-    //toastr.error('FUCK?!');
+*/
   });
     $('#reset').click(function (){
       $("#progress-bar")
       .css("width", "0%")
       .attr("aria-valuenow", '0')
-      .text("0/126");
+      .text("0%");
     })
     
   $(':checkbox:checked').prop('checked',false);//this clears checkboxes on refresh
