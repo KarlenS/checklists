@@ -5,7 +5,8 @@ from wtforms.validators import Required,Optional
 
 class LoginForm(Form):
     """Accepts a nickname and a room."""
-    name = StringField('Name', validators=[Required()])
-    date = DateField('Date', validators=[Required()])
+    name = StringField('Observer', validators=[Required()])
+    date = DateField('Date (UTC)', validators=[Required()])
     room = StringField('Room', validators=[Optional()])
-    submit = SubmitField('Enter the form')
+    submit_start = SubmitField('Start of Night Form')
+    submit_end = SubmitField('End of Night Form')

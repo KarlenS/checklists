@@ -11,10 +11,13 @@ def checklists():
         session['name'] = form.name.data
         session['date'] = str(form.date.data)
         session['room'] = session['date']
-        return redirect(url_for('.startnightform'))
+        if form.submit_start.data:
+            return redirect(url_for('.startnightform'))
+        else:
+            return redirect(url_for('.endnightform'))
     elif request.method == 'GET':
         form.name.data = session.get('name', '')
-        form.room.data = '1'
+        form.room.data = session.get('date','')
         #form.date.data = session.get('date', '')
     return render_template('checklists.html', form=form)
 
