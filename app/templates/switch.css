@@ -17,13 +17,15 @@ body{
 
 .progress {
     position: relative;
-    height: 20px;
+    height: 30px;
 }
 
 .progress span {
+    padding-top:5px;
     position: absolute;
     display: block;
-    width: 100%;
+    font-size: 20px;
+    width: 50%;
     color: black;
  }
 
