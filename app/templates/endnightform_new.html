@@ -860,7 +860,7 @@
             setTimeout(function(){
                 width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./77.;
                 socket.emit('updatebare',{bar: width});
-            }, 500);
+            }, 1000);
         });
 
 

@@ -1560,7 +1560,7 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
             setTimeout(function(){
                 width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./126.;
                 socket.emit('updatebars',{bar: width});
-            }, 500);
+            }, 1000);
         });
 
 
