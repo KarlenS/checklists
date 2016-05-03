@@ -2,6 +2,7 @@ var main = function() {
 
     $('body').scrollspy({ target: '#navtimes' });
 
+/*
     var getMessage = function (i) {
     var msgs = ['Another one!',
                 'You smart.',
@@ -24,7 +25,6 @@ var main = function() {
             return msgs[i];
         };
 
-/*
     $('input').on('click', function(){
 
         toastr.options = {
@@ -56,16 +56,14 @@ var main = function() {
     }
     //if(value == 126) 
 
-*/
   });
+*/
     $('#reset').click(function (){
       $("#progress-bar")
       .css("width", "0%")
       .attr("aria-valuenow", '0')
       .text("0%");
     })
-    
-  $(':checkbox:checked').prop('checked',false);//this clears checkboxes on refresh
 }
 
 $(document).ready(main);

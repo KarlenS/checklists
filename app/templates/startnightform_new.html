@@ -619,12 +619,12 @@ $(document).ready(function()
 				
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
-                                <div class="panel-heading"><strong>Computer hardware shed (old control trailer by T4)</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                                <div class="panel-heading clearfix"><h4 class="pull-left">Computer hardware shed (old control trailer by T4)</h4>
+                                   <button type="button" data-target="#90minhardwareshed" class="btn btn-warning pull-right">Uncheck All</button>
+                                   <button type="button" data-target="#90minhardwareshed" class="btn btn-info pull-right">Check All</button>
                                 </div>
 
-                                <ul class="list-group">
+                                <ul class="list-group" id="90minhardwareshed">
 
                                 <li class="list-group-item">
                                 	Remove <a href="" data-toggle="modal" data-target="#T0Radio">the cap</a> from IR radiometer (on staircase)
@@ -648,12 +648,12 @@ $(document).ready(function()
                     
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="panel panel-primary">
-                                <div class="panel-heading"><strong>Main Building</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                                <div class="panel-heading clearfix"><h4 class="pull-left">Main Building</h4>
+                                   <button type="button" data-target="#90minbuilding" class="btn btn-warning pull-right">Uncheck All</button>
+                                   <button type="button" data-target="#90minbuilding" class="btn btn-info pull-right">Check All</button>
                                 </div>
 
-                                <ul class="list-group">
+                                <ul class="list-group" id="90minbuilding">
 
                                 <li class="list-group-item">
                                 	Switch off all unnecessary <strong>lights</strong> in the base camp buildings
@@ -677,12 +677,12 @@ $(document).ready(function()
 				
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="panel panel-primary">
-                                <div class="panel-heading"><strong>Control Room</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                                <div class="panel-heading clearfix"><h4 class="pull-left">Control Room</h4>
+                                   <button type="button" data-target="#90mincontrol" class="btn btn-warning pull-right">Uncheck All</button>
+                                   <button type="button" data-target="#90mincontrol" class="btn btn-info pull-right">Check All</button>
                                 </div>
 
-                                <ul class="list-group">
+                                <ul class="list-group" id="90mincontrol">
 
                                 <li class="list-group-item">
                                 	Turn on all camera fans: on arrayctl: <code>start_camera_fan -a</code> (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Camera_Fan>details</a>)
@@ -739,11 +739,11 @@ $(document).ready(function()
 <div id="section-75min" class="section">
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
-                               <div class="panel-heading"><strong>Control Room: Control02 Computer</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                               <div class="panel-heading clearfix"><h4 class="pull-left">Control Room: Control02 Computer</h4>
+                                   <button type="button" class="btn btn-warning pull-right" data-target="#75mincontrol02">Uncheck All</button>
+                                   <button type="button" class="btn btn-info pull-right" data-target="#75mincontrol02">Check All</button>
                                </div>
-                                <ul class="list-group">
+                                <ul class="list-group" id="75mincontrol02">
 				                
                                 <li class="list-group-item"> 
                                 Check that ReadTemps is running on all 4 telescopes by opening readtemps desktop and if necessary clicking on <mark><font color=blue>RT</font></mark> icon <br> (or Log into arrayctl and launch FADC temperature monitors: <code>ssh arrayctl</code>, <code>startReadTemps.pl -1234</code>) (<a href=https://veritas.sao.arizona.edu/wiki/index.php/FADC_Temperature_Monitor>details</a>)
@@ -778,11 +778,11 @@ $(document).ready(function()
 				<br>
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
-                               <div class="panel-heading"><strong>Control Room: Control04 Computer</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                               <div class="panel-heading clearfix"><h4 class="pull-left">Control Room: Control04 Computer</h4>
+                                   <button type="button" class="btn btn-warning pull-right" data-target="#75mincontrol04">Uncheck All</button>
+                                   <button type="button" class="btn btn-info pull-right" data-target="#75mincontrol04">Check All</button>
                                </div>
-                                <ul class="list-group">
+                                <ul class="list-group" id="75mincontrol04">
 				                
                                 <li class="list-group-item"> 
                                         Launch Tracking: click the <font color=green>TRK</font> icon (or <code>startTRK.pl –a</code>), check to see that telescopes are in Array Mode. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Serial_Tracking_(PCS)#Array_interface>details</a>)
@@ -842,11 +842,11 @@ $(document).ready(function()
                 </div>
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
-                               <div class="panel-heading"><strong>Control Room: Control01 Computer</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                               <div class="panel-heading clearfix"><h4 class="pull-left">Control Room: Control01 Computer</h4>
+                                   <button type="button" class="btn btn-warning pull-right" data-target="#75mincontrol01">Uncheck All</button>
+                                   <button type="button" class="btn btn-info pull-right" data-target="#75mincontrol01">Check All</button>
                                </div>
-                                <ul class="list-group">
+                                <ul class="list-group" id="75mincontrol01">
 				                
                                 <li class="list-group-item"> 
                                         Launch the Infrared Radiometers: click on the FIR Icon 
@@ -890,11 +890,11 @@ $(document).ready(function()
 				<br>
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
-                               <div class="panel-heading"><strong>L2 Trigger GUI</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                               <div class="panel-heading clearfix"><h4 class="pull-left">L2 Trigger GUI</h4>
+                                   <button type="button" class="btn btn-warning pull-right" data-target="#75minL2">Uncheck All</button>
+                                   <button type="button" class="btn btn-info pull-right" data-target="#75minL2">Check All</button>
                                </div>
-                                <ul class="list-group">
+                                <ul class="list-group" id="75minL2">
 				                
                                 <li class="list-group-item"> 
                                         On control01 start the L2 trigger GUI using the <font color=red>L2</font> icon or  by typing: <code>java -jar /home/observer/L2Software/L2TriggerGUI.jar</code></label>
@@ -951,11 +951,11 @@ $(document).ready(function()
                 <div id="section-45min" class="section">
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
-                               <div class="panel-heading"><strong>Trailers</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                               <div class="panel-heading clearfix"><h4 class="pull-left">Trailers</h4>
+                                   <button type="button" class="btn btn-warning pull-right" data-target="#45mintrailers">Uncheck All</button>
+                                   <button type="button" class="btn btn-info pull-right" data-target="#45mintrailers">Check All</button>
                                </div>
-                                <ul class="list-group">
+                                <ul class="list-group" id="45mintrailers">
 				                
                                 <li class="list-group-item"> 
                                         Turn T1 preamp ON. Verify that it is delivering ~350W (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Activate_Preamplifiers>details</a>)</label>
@@ -992,11 +992,11 @@ $(document).ready(function()
                                 <br> 
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
-                               <div class="panel-heading"><strong>Control Room</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                               <div class="panel-heading clearfix"><h4 class="pull-left">Control Room</h4>
+                                   <button type="button" class="btn btn-warning pull-right" data-target="#45mincontrol">Uncheck All</button>
+                                   <button type="button" class="btn btn-info pull-right" data-target="#45mincontrol">Check All</button>
                                </div>
-                                <ul class="list-group">
+                                <ul class="list-group" id="45mincontrol">
 				                
                                 <li class="list-group-item"> 
                                         After the preamps are started, launch Current Monitor: click on the <font color=purple>IMON</font> icon (or <code>startIMon.pl -1234</code>) (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Current_Monitor>details</a>)
@@ -1052,30 +1052,30 @@ $(document).ready(function()
                     <div id="section-20min" class="section">
                         <div class="col-xs-12">
                            <div class="panel panel-primary">
-                               <div class="panel-heading"><strong>Control Room</strong>
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                               <div class="panel-heading clearfix"><h4 class="pull-left">Control Room</h4>
+                                   <button type="button" data-target="#20mincontrol" class="btn btn-warning pull-right">Uncheck All</button>
+                                   <button type="button" data-target="#20mincontrol" class="btn btn-info pull-right">Check All</button>
                                </div>
-                                <ul class="list-group">
+                                <ul class="list-group" id="20mincontrol">
 				                
                                 <li class="list-group-item"> 
                                         On control04, turn off HV
                                 <div class="material-switch pull-right">
-                                        <input id="20minhvoff" name="20minhvoff" type="checkbox"/>
+                                        <input id="20minhvoff" name="20minhvoff" type="checkbox" class="blah"/>
                                         <label for="20minhvoff" value="20minhvoff" class="label-success"></label>
                                 </div>
                                 </li>
                                 <li class="list-group-item"> 
                                         On control02, launch Pointing Monitor control: in VPM Control desktop click VPM (or <code>ssh control04</code> and execute <code>vpmctl</code>). Power on and start all monitors (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Pointing_Monitor#Using_the_Pointing_Monitors_during_gamma-ray_observations>details</a>)</label>
                                 <div class="material-switch pull-right">
-                                        <input id="20minlaunchvpm" name="20minlaunchvpm" type="checkbox"/>
+                                        <input id="20minlaunchvpm" name="20minlaunchvpm" type="checkbox" class="blah"/>
                                         <label for="20minlaunchvpm" value="20minlaunchvpm" class="label-success"></label>
                                 </div>
                                 </li>
                                 <li class="list-group-item"> 
                                         Start the ELog in your favorite text editor (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_the_ELOG>details</a>)</label>
                                 <div class="material-switch pull-right">
-                                        <input id="20minelog" name="20minelog" type="checkbox" />
+                                        <input id="20minelog" name="20minelog" type="checkbox" class="blah"/>
                                         <label for="20minelog" value="20minelog" class="label-success"></label>
                                 </div>
                                 </li>
@@ -1359,12 +1359,12 @@ $(document).ready(function()
                 
     <div class="col-xs-12">
         <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                   <button type="button" id="checkall" class="btn btn-info">Check All</button>
-                                   <button type="button" id="uncheckall" class="btn btn-warning">Uncheck All</button>
+                                <div class="panel-heading clearfix">
+                                   <button type="button" data-target="#startuplist" class="btn btn-warning pull-right">Uncheck All</button>
+                                   <button type="button" data-target="#startuplist" class="btn btn-info pull-right">Check All</button>
                                 </div>
 
-            <ul class="list-group">
+            <ul class="list-group" id="startuplist">
 
                             <li class="list-group-item">
                                         Final check: outside - is the sun down / basecamp lights out?
@@ -1587,6 +1587,7 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
     $(document).ready(function(){
 
 
+
         socket = io.connect('http://' + document.domain + ':' + location.port + '/');
         socket.on('connect', function() {
             socket.emit('joined', {});
@@ -1601,14 +1602,15 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
 
         $(':checkbox').change(function(data) {
             text =  $(this).attr('id');
-            width = parseFloat($("#progress-bar").attr("aria-valuenow"));
+            //width = parseFloat($("#progress-bar").attr("aria-valuenow"));
+                width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./126.;
             if(this.checked){
                 socket.emit('check',{msg: text});
-                width += 100./126.;
+              //  width += 100./126.;
             }
             else{
                 socket.emit('uncheck',{msg: text});
-                width -= 100./126.;
+             //   width -= 100./126.;
             }
             
             socket.emit('updatebars',{bar: width});
@@ -1642,6 +1644,18 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
         //    socket.emit('left', {});
         //    
         // });
+
+        $('.btn-info').click(function(){
+            var target = $(this).attr("data-target");
+            $(target).parent().find('li input[type=checkbox]').prop('checked',true).change();
+        });
+
+        $('.btn-warning').click(function(){
+            var target = $(this).attr("data-target");
+            $(target).parent().find('li input[type=checkbox]').prop('checked',false).change();
+        });
+
+
         socket.on('status', function(data){
                 session = data.msg;
         });
