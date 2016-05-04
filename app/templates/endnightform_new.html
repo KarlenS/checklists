@@ -52,9 +52,12 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="panel panel-primary">
-            <div class="panel-heading"><strong>Control Room (before going to telescopes/trailers)</strong></div>
+            <div class="panel-heading clearfix"><h5 class="pull-left">Control Room (before going to telescopes/trailers)</h5>
+                <button type="button" data-target="#endcontrolbefore" class="btn btn-warning pull-right">Uncheck All</button>
+                <button type="button" data-target="#endcontrolbefore" class="btn btn-info pull-right">Check All</button>
+            </div>
 
-            <ul class="list-group">
+            <ul class="list-group" id="endcontrolbefore">
 
             <li class="list-group-item">
 			    On control04 turn off HV and exit the program
@@ -571,9 +574,13 @@
 		
     <div class="col-xs-12">
         <div class="panel panel-primary">
-            <div class="panel-heading"><strong>Telescopes & trailers need to be double checked to reduce danger of serious damage (FADC meltdown, PMT exposure, etc)</strong></div>
+            <div class="panel-heading clearfix"><h5 class="pull-left">Telescopes & trailers need to be double checked to reduce danger of serious damage (FADC meltdown, PMT exposure, etc)</h5>
+                 <button type="button" data-target="#endoutside" class="btn btn-warning pull-right">Uncheck All</button>
+                 <button type="button" data-target="#endoutside" class="btn btn-info pull-right">Check All</button>
 
-            <ul class="list-group">
+            </div>
+
+            <ul class="list-group" id="endoutside">
 
             <li class="list-group-item">
 		        All telescope and trailer items double checked by second person for T1
@@ -632,9 +639,12 @@
 		<br>
     <div class="col-xs-12">
         <div class="panel panel-primary">
-            <div class="panel-heading">In the computer hardware shed (old control trailer by T4)</div>
+            <div class="panel-heading clearfix"><h5 class="pull-left">In the computer hardware shed (old control trailer by T4)</h5>
+                  <button type="button" data-target="#endhardwareshed" class="btn btn-warning pull-right">Uncheck All</button>
+                  <button type="button" data-target="#endhardwareshed" class="btn btn-info pull-right">Check All</button>
+            </div>
 
-            <ul class="list-group">
+            <ul class="list-group" id="endhardwareshed">
 
             <li class="list-group-item">
 			    Turn off the “T0” infrared radiometer (switch on power strip in staircase box).
@@ -663,9 +673,12 @@
 				
     <div class="col-xs-12">
         <div class="panel panel-primary">
-            <div class="panel-heading">Control Room (during telescope/trailer shutdown)</div>
+            <div class="panel-heading clearfix"><h5 class="pull-left">Control Room (during telescope/trailer shutdown)</h5>
+                <button type="button" data-target="#endcontrolduring" class="btn btn-warning pull-right">Uncheck All</button>
+                <button type="button" data-target="#endcontrolduring" class="btn btn-info pull-right">Check All</button>
+            </div>
 
-            <ul class="list-group">
+            <ul class="list-group" id="endcontrolduring">
 
             <li class="list-group-item">
 			    On control04 choose <mark>Select Flasher Run</mark> from VAC
@@ -737,9 +750,12 @@
 		   
     <div class="col-xs-12">
         <div class="panel panel-primary">
-            <div class="panel-heading">Control Room (after telescope/trailer shutdown)</div>
+            <div class="panel-heading clearfix"><h5 class="pull-left">Control Room (after telescope/trailer shutdown)</h5>
+                <button type="button" data-target="#endcontrolafter" class="btn btn-warning pull-right">Uncheck All</button>
+                <button type="button" data-target="#endcontrolafter" class="btn btn-info pull-right">Check All</button>
+            </div>
 
-            <ul class="list-group">
+            <ul class="list-group" id="endcontrolafter">
 
             <li class="list-group-item">
 			    On control04 verify that all four telescope interlocks are on and then exit the tracking programme
@@ -866,14 +882,15 @@
 
         $(':checkbox').change(function(data) {
             text =  $(this).attr('id');
-            width = parseFloat($("#progress-bar-end").attr("aria-valuenow"));
+            //width = parseFloat($("#progress-bar-end").attr("aria-valuenow"));
+            width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./126.;
             if(this.checked){
                 socket.emit('check',{msg: text});
-                width += 100./77.;
+                //width += 100./77.;
             }
             else{
                 socket.emit('uncheck',{msg: text});
-                width -= 100./77.;
+                //width -= 100./77.;
             }
                 
             socket.emit('updatebare',{bar: width});
@@ -897,19 +914,39 @@
                 .attr("aria-valuenow", data.bar)
                 .text(value + "/77");
 
+                if (value >= 100) {
+                    toastr.success('Checklist Completed!');
+                }
+
         });
+
+        $('.btn-info').click(function(){
+            var target = $(this).attr("data-target");
+            $(target).parent().find('li input[type=checkbox]').prop('checked',true).change();
+        });
+
+        $('.btn-warning').click(function(){
+            var target = $(this).attr("data-target");
+            $(target).parent().find('li input[type=checkbox]').prop('checked',false).change();
+        });
+
+
+
+
+        socket.on('status', function(data){
+                session = data.msg;
+        });
+
+        window.onbeforeunload = leave_room;
+
+        function leave_room() {
+            socket.emit('left', {msg: session}, function() {
+                socket.disconnect();
+            });
+        }
 
     });
 
-        window.onbeforeunload = leave_room;
-        function leave_room() {
-            socket.emit('left', {}, function() {
-                socket.disconnect();
-
-                // go back to the login page
-                window.location.href = "{{ url_for('main.checklists') }}";
-            });
-        }
 </script>
 
 
