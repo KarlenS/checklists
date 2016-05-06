@@ -31,8 +31,13 @@ class Mdb(object):
     def updateMdbBox(self, box, state, session):
         """Takes the id of a box (from html), its state (checked/true or unchecked/false), and session (date)
         and updates the box to the specified state"""
-        result = self.db.checkbox.update_one({"box": box, "session": session},{"$set": { "state": state },"$currentDate":{"date": True} })
+        result = self.db.checkbox.update_one({"box": box, "session": session},{"$set": { "state": state},"$currentDate":{"date": True} })
     
+    def updateMdbComment(self, box, session, comment=""):
+        """Takes the id of a box (from html), a comment, and session (date)
+        and updates the comment text for the box"""
+        result = self.db.checkbox.update_one({"box": box, "session": session},{"$set": { "comment": comment},"$currentDate":{"date": True} })
+
     def cloneMdbTemplate(self, observer, date):
         """takes observer name and date/session and replicates the template form
         for the given session/date returning the new form for that session"""

@@ -55,6 +55,23 @@ def uncheck(message):
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False,  "session": date, "comment": ""})
     print "EMITTING uncheck for", sendID, room
 
+@socketio.on('comment', namespace='/')
+def comment(message):
+    """Sent by a client when the user checks a box.
+    The box is checked for all people in the room."""
+    date = session.get('date')
+    room = date 
+    #sendID = '#'+message['msg'] 
+    if message['msg'] != '':
+        db.updateMdbComment(message['id'], date, message['msg'])
+    #change this so the comment is returned from the db
+    print message['id'],message['msg']
+    emit('comments',{'id':message['id'],'msg':message['msg']})
+
+#    db = Mdb()
+    #db.updateMdbBox(message['msg'],True,date)
+    #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False, "session": date, "comment": ""})
+
 @socketio.on('updatebars', namespace='/')
 def updatebar(message):
     """Sent by a client when the user checks a box.
