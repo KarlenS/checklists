@@ -30,6 +30,7 @@
         </div>
     <div class="collapse navbar-collapse" id = "end-navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><a id="fullscreenbtn"><span class="glyphicon glyphicon-fullscreen"></span></a></li>
             <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span> Other Checklists<span class="caret"></span></a>
@@ -883,7 +884,7 @@
         $(':checkbox').change(function(data) {
             text =  $(this).attr('id');
             //width = parseFloat($("#progress-bar-end").attr("aria-valuenow"));
-            width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./126.;
+            width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./77.;
             if(this.checked){
                 socket.emit('check',{msg: text});
                 //width += 100./77.;
@@ -912,7 +913,7 @@
                 $("#progress-bar-end")
                 .css("width", data.bar + "%")
                 .attr("aria-valuenow", data.bar)
-                .text(value + "/77");
+                .text(value + "%");
 
                 if (value >= 100) {
                     toastr.success('Checklist Completed!');
@@ -944,6 +945,39 @@
                 socket.disconnect();
             });
         }
+
+//fullscreen
+
+function toggleFullscreen(elem) {
+  elem = elem || document.documentElement;
+  if (!document.fullscreenElement && !document.mozFullScreenElement &&
+    !document.webkitFullscreenElement && !document.msFullscreenElement) {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+}
+
+$("#fullscreenbtn").click(function() {
+  toggleFullscreen();
+});
+
 
     });
 
