@@ -63,6 +63,8 @@ var main = function() {
       .css("width", "0%")
       .attr("aria-valuenow", '0')
       .text("0%");
+
+      $(':checkbox').prop('checked',false).change();
     })
 }
 

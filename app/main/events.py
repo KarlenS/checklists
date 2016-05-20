@@ -30,13 +30,14 @@ def joined(message):
 def check(message):
     """Sent by a client when the user checks a box.
     The box is checked for all people in the room."""
+    observer = session.get('name') 
     date = session.get('date')
     room = date 
     sendID = '#'+message['msg'] 
     emit('message', {'msg': sendID}, room=room)
 
 #    db = Mdb()
-    db.updateMdbBox(message['msg'],True,date)
+    db.updateMdbBox(message['msg'],True,date,observer)
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False, "session": date, "comment": ""})
     print "EMITTING check for",sendID, room
 
@@ -45,28 +46,48 @@ def check(message):
 def uncheck(message):
     """Sent by a client when the user checks a box.
     The box is checked for all people in the room."""
+    observer = session.get('name') 
     date = session.get('date')
     room = date 
     sendID = '#' + message['msg']
     emit('unmessage', {'msg': sendID}, room=room)
 
 #    db = Mdb()
-    db.updateMdbBox(message['msg'],False,date)
+    db.updateMdbBox(message['msg'],False,date,observer)
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False,  "session": date, "comment": ""})
     print "EMITTING uncheck for", sendID, room
+
+
+@socketio.on('deletecomment', namespace='/')
+def deletecomment(message):
+    """sent by client when tryiing to delete a comment
+    deletes the appropriate comment from the database"""
+    observer = session.get('name') 
+    date = session.get('date')
+    commentid = message['comID']
+    box = message['id']
+    db.deleteComment(box,date,observer,commentid)
+    print "TOLD TO DELETE",commentid
 
 @socketio.on('comment', namespace='/')
 def comment(message):
     """Sent by a client when the user checks a box.
     The box is checked for all people in the room."""
+    observer = session.get('name') 
     date = session.get('date')
     room = date 
+    dbmessage = message['msg']
     #sendID = '#'+message['msg'] 
-    if message['msg'] != '':
-        db.updateMdbComment(message['id'], date, message['msg'])
-    #change this so the comment is returned from the db
-    print message['id'],message['msg']
-    emit('comments',{'id':message['id'],'msg':message['msg']})
+    if dbmessage != '':
+        #dbmessage = observer + ': ' + dbmessage + '\n'
+        db.updateMdbComment(message['id'], date, observer, dbmessage)
+
+    #sorting the db comments by date
+    dbcomment = db.getComment(message['id'],date)
+    sendcomment = dbcomment['comment']
+    sortedkeys = sorted(sendcomment)
+    print "DB COMMENT:",sendcomment
+    emit('comments',{'id':message['id'],'msg':sendcomment,'keys':sortedkeys},room=room)
 
 #    db = Mdb()
     #db.updateMdbBox(message['msg'],True,date)

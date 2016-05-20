@@ -28,22 +28,47 @@ class Mdb(object):
             print "FOUND SESSION"
             return docs
     
-    def updateMdbBox(self, box, state, session):
+    def updateMdbBox(self, box, state, session, observer):
         """Takes the id of a box (from html), its state (checked/true or unchecked/false), and session (date)
         and updates the box to the specified state"""
-        result = self.db.checkbox.update_one({"box": box, "session": session},{"$set": { "state": state},"$currentDate":{"date": True} })
+        result = self.db.checkbox.update_one({"box": box, "session": session},{"$set": { "state": state, "observer": observer},"$currentDate":{"date": True} })
     
-    def updateMdbComment(self, box, session, comment=""):
+    def updateMdbComment(self, box, session, observer, comment=''):
         """Takes the id of a box (from html), a comment, and session (date)
         and updates the comment text for the box"""
-        result = self.db.checkbox.update_one({"box": box, "session": session},{"$set": { "comment": comment},"$currentDate":{"date": True} })
+
+        
+        commentlistdb = self.getComment(box, session)
+        #print commentlistdb
+        commentlist = commentlistdb['comment']
+        #print type(commentlist)
+        print "PRINTING COMMENTS FOR BOX: ", box#," WITH COMMENTS:", commentlist
+        #need to maybe store the datetime of comment too and always append
+        if comment != '':
+            dtimenow = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S")
+            commentlist[dtimenow] = [observer,comment]
+
+        result = self.db.checkbox.update_one({"box": box, "session": session},{"$set": { "comment": commentlist, "observer":observer},"$currentDate":{"date": True} })
+
+    def getComment(self, box, session):
+        """Takes the id of a box (from html) and session (date)
+        and returns the comment field"""
+        return self.db.checkbox.find_one({"box": box, "session": session},{"comment": 1, "observer":1})
+
+    def deleteComment(self,box,session,observer,commentid):
+        commentlistdb = self.getComment(box,session)
+        commentlist = commentlistdb['comment']
+        commentlist.pop(commentid,None);
+        result = self.db.checkbox.update_one({"box": box, "session": session},{"$set": { "comment": commentlist, "observer":observer},"$currentDate":{"date": True} })
+
+
 
     def cloneMdbTemplate(self, observer, date):
         """takes observer name and date/session and replicates the template form
         for the given session/date returning the new form for that session"""
         temp_docs = self.db.checkbox.find({"session": "0000-00-00"})
         for doc in temp_docs:
-            self.insertMdb({"observer": observer, "date": datetime.datetime.now(), "box": doc["box"], "state": False, "session": date, "comment": ""})
+            self.insertMdb({"observer": observer, "date": datetime.datetime.now(), "box": doc["box"], "state": False, "session": date, "comment": {}})
         return self.db.checkbox.find({"session": date}) 
 
     def insertMdb(self, doc):
