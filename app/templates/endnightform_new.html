@@ -30,7 +30,6 @@
         </div>
     <div class="collapse navbar-collapse" id = "end-navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a id="fullscreenbtn"><span class="glyphicon glyphicon-fullscreen"></span></a></li>
             <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span> Other Checklists<span class="caret"></span></a>
@@ -39,6 +38,7 @@
                     <li><a href="https://veritas.sao.arizona.edu/wiki/index.php/During_Night_Checklist"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> During Night Checklist</font></strong></a></li>
                 </ul>
             </li>
+            <li><a id="fullscreenbtn"><span class="glyphicon glyphicon-fullscreen"></span></a></li>
           </ul>
     </div>
 </div>
@@ -719,7 +719,7 @@
             </li>
             <li class="list-group-item">
 			    On control02 copy/paste the text runlog from the Run Log Generator into the ELog<br>
-                (Either select the text format on the website or click the <font color=darkblue>LG</font> icon on control02, which should work even if romulus is down) 
+                (Either select the text format on the website or click the <font color=skyblue>LG</font> icon on control02, which should work even if romulus is down) 
             <div class="material-switch pull-right">
 			    <input id="endrunlog" name="endrunlog" type="checkbox"/>
                 <label for="endrunlog" value="endrunlog" class="label-success"></label>
@@ -860,6 +860,31 @@
 
 </div>
 
+
+<!-- this is the modal for comment box -->
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Comments:</h4>
+        <p id="display-text"></p>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="commentsubmit">Submit Comment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 <script src="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/updateBar.js"></script>
@@ -870,6 +895,13 @@
     var value;
     var width;
     $(document).ready(function(){
+
+        //Creates comment boxes for each checkbox, which will trigger modals
+        $('.list-group-item div input').each(function(){
+            commentButton = $('<button />').addClass('commentButton btn btn-primary btn-xs glyphicon glyphicon glyphicon-comment').attr("type","button").attr("data-toggle", "modal").attr("data-target", "#commentModal").attr("data-boxname",this.id);
+            $(this).parent().parent().append(commentButton);
+            });
+            
         socket = io.connect('http://' + document.domain + ':' + location.port + '/');
         socket.on('connect', function() {
             socket.emit('joined', {});
@@ -931,6 +963,47 @@
             $(target).parent().find('li input[type=checkbox]').prop('checked',false).change();
         });
 
+       $('#commentModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            boxID = button.data('boxname'); // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            //modal.find('.modal-title').text('New message to ' + recipient)
+            //modal.find('.modal-body textarea').val()
+            socket.emit('comment',{id: boxID, msg:''}); 
+       }) 
+       $('#commentsubmit').click(function(){
+           var commentmsg = $("#message-text").val();
+           socket.emit('comment',{id: boxID, msg: commentmsg});
+       })
+
+       socket.on('comments', function(data){
+           //alert(data.msg)
+           var comtext = [];
+           var bid = data.id;
+           var msgdict = data.msg;
+           var sortedkeys = data.keys;
+           var dispmsg = "";
+
+           for (var i = 0; i < sortedkeys.length; i++) {
+               dt = sortedkeys[i];
+               comtext = msgdict[dt];
+               dispmsg += "<p style='color:red;' id="+ dt + ">" + "["+dt+"] "+comtext[0]+": "+ comtext[1];
+               dispmsg +='<button type="button" id='+dt+ ' class="close delcomment" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&minus;</span></button> </p>'
+
+           }
+           $("#display-text").html(dispmsg);
+           $('.delcomment').click(function(){
+               var deadcommentID = $(this).attr("id");
+               var dltID = "#" + deadcommentID;
+               console.log(dltID);
+               toastr.error('Once deleted, it will not come back...<br /><button type="button" id="yestodelete" class="btn btn-success btn-sm pull-left">DO IT!</button> <button type="button" class="btn btn-warning btn-sm pull-right">Please no</button>');
+               $("#yestodelete").click(function(){
+                    $(dltID).remove();
+                    socket.emit('deletecomment',{id: bid, comID: deadcommentID});
+               });
+           });
+        });
 
 
 

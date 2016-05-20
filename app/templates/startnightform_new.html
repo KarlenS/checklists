@@ -72,7 +72,6 @@
                 <li><a href="#section-startup">STARTUP</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a id="fullscreenbtn"><span class="glyphicon glyphicon-fullscreen"></span></a></li>
                 <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span> Other Checklists<span class="caret"></span></a>
@@ -81,6 +80,7 @@
                         <li><a href="/endnightform"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> End of Night Checklist</font></strong></a></li>
                     </ul>
                 </li>
+                <li><a id="fullscreenbtn"><span class="glyphicon glyphicon-fullscreen"></span></a></li>
             </ul>
         </div>
 </div>
@@ -635,7 +635,6 @@ $(document).ready(function()
 
                                 <li class="list-group-item">
                                 	Remove <a href="" data-toggle="modal" data-target="#T0Radio">the cap</a> from IR radiometer (on staircase)
-                                   <button type="button" class="btn btn-primary btn-xs glyphicon glyphicon glyphicon-comment" data-toggle="modal" data-target="#commentModal" data-boxname="90minHardwareShedradiocap"></button>
                                     <div class="material-switch pull-right">
                                 	    <input id="90minHardwareShedradiocap" name="90minHardwareShedradiocap" type="checkbox" />
                                 	    <label for="90minHardwareShedradiocap" value="90minHardwareShedradiocap" class="label-success"></label>
@@ -643,7 +642,6 @@ $(document).ready(function()
                                 </li>
                                 <li class="list-group-item">
                                 	Turn on the radiometer - switch on the power strip inside <a href="" data-toggle="modal" data-target="#T0Radio">the box</a> on the staircase. 
-                                   <button type="button" class="btn btn-primary btn-xs glyphicon glyphicon glyphicon-comment" data-toggle="modal" data-target="#commentModal" data-boxname="90minHardwareShedradioOn"></button>
 <!-- (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers>details</a>) -->
                                     <div class="material-switch pull-right">
                                 	    <input id="90minHardwareShedradioOn" name="90minHardwareShedradioOn" type="checkbox"/>
@@ -1636,8 +1634,11 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
     var session;
     $(document).ready(function(){
 
-        
-
+        //Creates comment boxes for each checkbox, which will trigger modals
+        $('.list-group-item div input').each(function(){
+            commentButton = $('<button />').addClass('commentButton btn btn-primary btn-xs glyphicon glyphicon glyphicon-comment').attr("type","button").attr("data-toggle", "modal").attr("data-target", "#commentModal").attr("data-boxname",this.id);
+            $(this).parent().parent().append(commentButton);
+            });
 
         socket = io.connect('http://' + document.domain + ':' + location.port + '/');
         socket.on('connect', function() {
