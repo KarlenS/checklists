@@ -17,11 +17,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: checkall
+  name: checkalldb
 spec:
   containers:
-    - name: checkall
-      image: gcr.io/veritas-checklists/checkall
+    - name: checkalldb
+      image: gcr.io/veritas-checklists/checkalldb
       imagePullPolicy: Always
       ports:
         - containerPort: 5000

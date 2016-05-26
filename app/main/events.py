@@ -34,26 +34,28 @@ def check(message):
     date = session.get('date')
     room = date 
     sendID = '#'+message['msg'] 
-    emit('message', {'msg': sendID}, room=room)
+
+    if (message['action'] == 'check'):
+        emit('message', {'msg': sendID}, room=room)
+        db.updateMdbBox(message['msg'],True,date,observer)
+    else:
+        emit('unmessage', {'msg': sendID}, room=room)
+        db.updateMdbBox(message['msg'],False,date,observer)
 
 #    db = Mdb()
-    db.updateMdbBox(message['msg'],True,date,observer)
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False, "session": date, "comment": ""})
     print "EMITTING check for",sendID, room
 
-
-@socketio.on('uncheck', namespace='/')
-def uncheck(message):
-    """Sent by a client when the user checks a box.
-    The box is checked for all people in the room."""
-    observer = session.get('name') 
-    date = session.get('date')
-    room = date 
-    sendID = '#' + message['msg']
-    emit('unmessage', {'msg': sendID}, room=room)
+#@socketio.on('uncheck', namespace='/')
+#def uncheck(message):
+#    """Sent by a client when the user checks a box.
+#    The box is checked for all people in the room."""
+#    observer = session.get('name') 
+#    date = session.get('date')
+#    room = date 
+#    sendID = '#' + message['msg']
 
 #    db = Mdb()
-    db.updateMdbBox(message['msg'],False,date,observer)
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False,  "session": date, "comment": ""})
     print "EMITTING uncheck for", sendID, room
 

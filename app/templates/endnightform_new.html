@@ -14,7 +14,7 @@
             <link rel="stylesheet" href="http://bootswatch.com/assets/css/bootswatch.min.css"> -->
 </head>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navtimes">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navtop">
 <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle"
@@ -901,6 +901,31 @@
             commentButton = $('<button />').addClass('commentButton btn btn-primary btn-xs glyphicon glyphicon glyphicon-comment').attr("type","button").attr("data-toggle", "modal").attr("data-target", "#commentModal").attr("data-boxname",this.id);
             $(this).parent().parent().append(commentButton);
             });
+
+
+// This is to fade out navbar
+    // fade in .navbar
+    var lastScrollTop = 0;
+    $(function () {
+        $(window).scroll(function (event) {
+
+                 // set distance user needs to scroll before we start fadeIn
+            var st = $(this).scrollTop();
+            if (st - lastScrollTop > 10 ){
+                $('#navtop').fadeOut(1000);
+
+            //if ($(this).scrollTop() < 100) {
+                } else { if (lastScrollTop - st > 10){
+                    $('#navtop').fadeIn(500);
+                }
+            }
+            lastScrollTop = st;
+        });
+
+
+    });
+
+
             
         socket = io.connect('http://' + document.domain + ':' + location.port + '/');
         socket.on('connect', function() {
@@ -1049,6 +1074,11 @@ function toggleFullscreen(elem) {
 
 $("#fullscreenbtn").click(function() {
   toggleFullscreen();
+});
+
+
+$('.navbar-collapse').click('li', function(){
+    $('.navbar-collapse').collapse('hide');
 });
 
 

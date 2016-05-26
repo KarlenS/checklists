@@ -19,35 +19,8 @@
 
 
 </head>
-<!--
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-<div class="container">
-  <div class="row">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/checklists.html">VERITAS Checklists</a>
-        </div>
-  <div class="navbar-header">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/startnightform_new.html">Start of Night</a></li>
-            <li><a href="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/endnightform_new.html">End of Night</a></li>
-          </ul>
-        </div>
-  </div>
-  </div>
-</nav>
--->
 
-
-
-
-
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navtimes">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navtop">
 <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle"
@@ -65,16 +38,16 @@
 
         <div class="collapse navbar-collapse" id = "main-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#section-90min">90 MINUTES</a></li>
-                <li><a href="#section-75min">75 MINUTES</a></li>
-                <li><a href="#section-45min">45 MINUTES</a></li>
-                <li><a href="#section-20min">20 MINUTES</a></li>
-                <li><a href="#section-startup">STARTUP</a></li>
+                <li><a href="#section-90min">90 MIN</a></li>
+                <li><a href="#section-75min">75 MIN</a></li>
+                <li><a href="#section-45min">45 MIN</a></li>
+                <li><a href="#section-20min">20 MIN</a></li>
+                <li><a href="#section-startup">START</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span> Other Checklists<span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-th-list"></span><span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="https://veritas.sao.arizona.edu/wiki/index.php/During_Night_Checklist"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> During Night Checklist</font></strong></a></li>
                         <li><a href="/endnightform"><span class="glyphicon glyphicon-list-alt"></span><strong><font color=gold> End of Night Checklist</font></strong></a></li>
@@ -91,7 +64,7 @@
 -->
 
 
-<body data-spy="scroll" data-target="#navtimes"> 
+<body data-spy="scroll" data-target="#navtop"> 
 
 <div class="container-fluid section" id="section-start">
 <form class="form-inline" role="form" id="checkform" autocomplete="off">
@@ -162,42 +135,42 @@ $(document).ready(function()
                         <ul class="list-group">
 
                             <li class="list-group-item">
-                                    Inspect around the base of each telescope for obstruction
+                                    Inspect around the base of each telescope for obstructions
                                     <div class="material-switch pull-right">
                                         <input id="90minT1base" name="90minT1base" type="checkbox"/>
                                         <label for="90minT1base" value="90minT1base" class="label-success"></label>
                                     </div>
                             </li>
                             <li class="list-group-item">
-                                    Check that the blue lanyard on the left side of the elevation deck is vertical and appears to be secure between the horizontal metal loops 
+                                    Blue lanyard on the elevation deck is vertical and secure between horizontal metal loops
                                     <div class="material-switch pull-right">
                                         <input id="90minT1lanyard" name="90minT1lanyard" type="checkbox"/>
                                         <label for="90minT1lanyard" value="90" class="label-success"></label>
                                     </div>
                             </li>
                             <li class="list-group-item">
-                                    Check that the RUN/SAFE switch is at SAFE (down) 
+                                    RUN/SAFE switch is on SAFE (down) 
                                     <div class="material-switch pull-right">
                                         <input id="90minT1runsafe" name="90minT1runsafe" type="checkbox"/>
                                         <label for="90minT1runsafe" value="90minT1runsafe" class="label-success"></label>
                                     </div>
                             </li>
                             <li class="list-group-item">
-                                    Check that the lights inside the positioner pedestal are off
+                                    Lights inside the pedestal are off
                                     <div class="material-switch pull-right">
                                         <input id="90minT1pedlights" name="90minT1pedlights" type="checkbox"/>
                                         <label for="90minT1pedlights" value="90minT1pedlights" class="label-success"></label>
                                     </div>
                             </li>
                             <li class="list-group-item">
-                                    Check that camera shutters are closed 
+                                    Camera shutters are closed 
                                     <div class="material-switch pull-right">
                                         <input id="90minT1shutter" name="90minT1shutter" type="checkbox"/>
                                         <label for="90minT1shutter" value="90minT1shutter" class="label-success"></label>
                                     </div>
                             </li>
                             <li class="list-group-item">
-                                    Check that the safety bar on the platform is not in the way of the quad arms, remove if necessary 
+                                    Safety bar on the platform off, remove if necessary 
                                     <div class="material-switch pull-right">
                                         <input id="90minT1safetybar" name="90minT1safetybar" type="checkbox"/>
                                         <label for="90minT1safetybar" value="90minT1safetybar" class="label-success"></label>
@@ -214,28 +187,28 @@ $(document).ready(function()
                         <ul class="list-group">
 
                             <li class="list-group-item">
-                                    Key on the HV supplies (2 crates) to LOCAL
+                                    <span class="glyphicon glyphicon-flash"></span> Key on the HV supplies (2 crates) to LOCAL
                                     <div class="material-switch pull-right">
                                         <input id="90minT1hvcrates" name="90minT1hvcrates" type="checkbox"/>
                                         <label for="90minT1hvcrates" value="90minT1hvcrates" class="label-success"></label>
                                     </div>
                             </li>
                             <li class="list-group-item">
-                                    Check that the front and back FADC rack doors are latched closed
+                                    Front and back FADC rack doors are closed
                                     <div class="material-switch pull-right">
                                         <input id="90minT1fadcdoors" name="90minT1fadcdoors" type="checkbox"/>
                                         <label for="90minT1fadcdoors" value="90minT1fadcdoors" class="label-success"></label>
                                     </div>
                             </li>
                             <li class="list-group-item">
-                                    Switch on the chiller - ENABLE system and ENABLE comp. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller>details</a>) 
+                                    <span class="glyphicon glyphicon-flash"></span> Switch on the chiller - ENABLE system and ENABLE comp. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller>details</a>) 
                                     <div class="material-switch pull-right">
                                         <input id="90minT1chiller" name="90minT1chiller" type="checkbox"/>
                                         <label for="90minT1chiller" value="90minT1chiller" class="label-success"></label>
                                     </div>
                             </li>
                             <li class="list-group-item">
-                                    Turn the trailer AC to 57 ºF (<a href="" data-toggle="modal" data-target="#test">details</a>)
+                                    <span class="glyphicon glyphicon-flash"></span> Turn the trailer AC to 57 ºF (<a href="" data-toggle="modal" data-target="#test">details</a>)
                                     <div class="material-switch pull-right">
                                         <input id="90minT1ac" name="90minT1ac" type="checkbox"/>
                                         <label for="90minT1ac" value="90minT1ac" class="label-success"></label>
@@ -249,7 +222,7 @@ $(document).ready(function()
                                     </div>
                             </li>
                             <li class="list-group-item">
-                                   Verify that the HV crates booted okay (display shows splash screen, +5V, +-12V, +48V LEDs lit)
+                                    Verify that the HV crates booted okay (display shows splash screen, +5V, +-12V, +48V LEDs lit)
                                     <div class="material-switch pull-right">
                                         <input id="90minT1hvcrateok" name="90minT1hvcrateok" type="checkbox"/>
                                         <label for="90minT1hvcrateok" value="90minT1hvcrateok" class="label-success"></label>
@@ -275,7 +248,7 @@ $(document).ready(function()
                             <ul class="list-group">
 
                                 <li class="list-group-item">
-                                    Inspect around the base of each telescope for obstruction
+                                    Inspect around the base of each telescope for obstructions
                                     <div class="material-switch pull-right">
                                         <input id="90minT2base" name="90minT2base" type="checkbox"/>
                                         <label for="90minT2base" value="90minT2base" class="label-success"></label>
@@ -289,35 +262,35 @@ $(document).ready(function()
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the blue lanyard on the left side of the elevation deck is vertical and appears to be secure between the horizontal metal loops 
+                                    Blue lanyard on the elevation deck is vertical and secure between horizontal metal loops
                                     <div class="material-switch pull-right">
                                         <input id="90minT2lanyard" name="90minT2lanyard" type="checkbox"/>
                                         <label for="90minT2lanyard" value="90minT2lanyard" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the RUN/SAFE switch is at SAFE (down) 
+                                    RUN/SAFE switch is on SAFE (down) 
                                     <div class="material-switch pull-right">
                                         <input id="90minT2runsafe" name="90minT2runsafe" type="checkbox"/>
                                         <label for="90minT2runsafe" value="90minT2runsafe" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the lights inside the positioner pedestal are off
+                                    Lights inside the pedestal are off
                                     <div class="material-switch pull-right">
                                         <input id="90minT2pedlights" name="90minT2pedlights" type="checkbox"/>
                                         <label for="90minT2pedlights" value="90minT2pedlights" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that camera shutters are closed 
+                                    Camera shutters are closed 
                                     <div class="material-switch pull-right">
                                         <input id="90minT2shutter" name="90minT2shutter" type="checkbox"/>
                                         <label for="90minT2shutter" value="90minT2shutter" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the safety bar on the platform is not in the way of the quad arms, remove if necessary 
+                                    Safety bar on the platform off, remove if necessary 
                                     <div class="material-switch pull-right">
                                         <input id="90minT2safetybar" name="90minT2safetybar" type="checkbox"/>
                                         <label for="90minT2safetybar" value="90minT2safetybar" class="label-success"></label>
@@ -335,28 +308,28 @@ $(document).ready(function()
                             <ul class="list-group">
 
                                 <li class="list-group-item">
-                                    Key on the HV supplies (2 crates) to LOCAL
+                                    <span class="glyphicon glyphicon-flash"></span> Key on the HV supplies (2 crates) to LOCAL
                                     <div class="material-switch pull-right">
                                         <input id="90minT2hvcrates" name="90minT2hvcrates" type="checkbox"/>
                                         <label for="90minT2hvcrates" value="90minT2hvcrates" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the front and back FADC rack doors are latched closed
+                                    Front and back FADC rack doors are closed
                                     <div class="material-switch pull-right">
                                         <input id="90minT2fadcdoors" name="90minT2fadcdoors" type="checkbox"/>
                                         <label for="90minT2fadcdoors" value="90minT2fadcdoors" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Switch on the chiller - ENABLE system and ENABLE comp. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller>details</a>) 
+                                    <span class="glyphicon glyphicon-flash"></span> Switch on the chiller - ENABLE system and ENABLE comp. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller>details</a>) 
                                     <div class="material-switch pull-right">
                                         <input id="90minT2chiller" name="90minT2chiller" type="checkbox"/>
                                         <label for="90minT2chiller" value="90minT2chiller" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Turn the trailer AC to 57 ºF (<a href="" data-toggle="modal" data-target="#test">details</a>)
+                                    <span class="glyphicon glyphicon-flash"></span> Turn the trailer AC to 57 ºF (<a href="" data-toggle="modal" data-target="#test">details</a>)
                                     <div class="material-switch pull-right">
                                         <input id="90minT2ac" name="90minT2ac" type="checkbox"/>
                                         <label for="90minT2ac" value="90minT2ac" class="label-success"></label>
@@ -397,7 +370,7 @@ $(document).ready(function()
                         <ul class="list-group">
 
                                 <li class="list-group-item">
-                                    Inspect around the base of each telescope for obstruction
+                                    Inspect around the base of each telescope for obstructions
                                     <div class="material-switch pull-right">
                                         <input id="90minT3base" name="90minT3base" type="checkbox"/>
                                         <label for="90minT3base" value="90minT3base" class="label-success"></label>
@@ -411,35 +384,35 @@ $(document).ready(function()
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the blue lanyard on the left side of the elevation deck is vertical and appears to be secure between the horizontal metal loops 
+                                    Blue lanyard on the elevation deck is vertical and secure between horizontal metal loops
                                     <div class="material-switch pull-right">
                                         <input id="90minT3lanyard" name="90minT3lanyard" type="checkbox"/>
                                         <label for="90minT3lanyard" value="90minT3lanyard" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the RUN/SAFE switch is at SAFE (down) 
+                                    RUN/SAFE switch is on SAFE (down) 
                                     <div class="material-switch pull-right">
                                         <input id="90minT3runsafe" name="90minT3runsafe" type="checkbox"/>
                                         <label for="90minT3runsafe" value="90minT3runsafe" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the lights inside the positioner pedestal are off
+                                    Lights inside the pedestal are off
                                     <div class="material-switch pull-right">
                                         <input id="90minT3pedlights" name="90minT3pedlights" type="checkbox"/>
                                         <label for="90minT3pedlights" value="90minT3pedlights" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that camera shutters are closed 
+                                    Camera shutters are closed 
                                     <div class="material-switch pull-right">
                                         <input id="90minT3shutter" name="90minT3shutter" type="checkbox"/>
                                         <label for="90minT3shutter" value="90minT3shutter" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the safety bar on the platform is not in the way of the quad arms, remove if necessary 
+                                    Safety bar on the platform off, remove if necessary 
                                     <div class="material-switch pull-right">
                                         <input id="90minT3safetybar" name="90minT3safetybar" type="checkbox"/>
                                         <label for="90minT3safetybar" value="90minT3safetybar" class="label-success"></label>
@@ -457,28 +430,28 @@ $(document).ready(function()
                         <ul class="list-group">
 
                                 <li class="list-group-item">
-                                    Key on the HV supplies (2 crates) to LOCAL
+                                    <span class="glyphicon glyphicon-flash"></span> Key on the HV supplies (2 crates) to LOCAL
                                     <div class="material-switch pull-right">
                                         <input id="90minT3hvcrates" name="90minT3hvcrates" type="checkbox"/>
                                         <label for="90minT3hvcrates" value="90minT3hvcrates" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the front and back FADC rack doors are latched closed
+                                    Front and back FADC rack doors are closed
                                     <div class="material-switch pull-right">
                                         <input id="90minT3fadcdoors" name="90minT3fadcdoors" type="checkbox"/>
                                         <label for="90minT3fadcdoors" value="90minT3fadcdoors" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Switch on the chiller - ENABLE system and ENABLE comp. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller>details</a>) 
+                                    <span class="glyphicon glyphicon-flash"></span> Switch on the chiller - ENABLE system and ENABLE comp. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller>details</a>) 
                                     <div class="material-switch pull-right">
                                         <input id="90minT3chiller" name="90minT3chiller" type="checkbox"/>
                                         <label for="90minT3chiller" value="90minT3chiller" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Turn the trailer AC to 57 ºF (<a href="" data-toggle="modal" data-target="#test">details</a>)
+                                    <span class="glyphicon glyphicon-flash"></span> Turn the trailer AC to 57 ºF (<a href="" data-toggle="modal" data-target="#test">details</a>)
                                     <div class="material-switch pull-right">
                                         <input id="90minT3ac" name="90minT3ac" type="checkbox"/>
                                         <label for="90minT3ac" value="90minT3ac" class="label-success"></label>
@@ -519,42 +492,42 @@ $(document).ready(function()
                         <ul class="list-group">
 
                                 <li class="list-group-item">
-                                    Inspect around the base of each telescope for obstruction 
+                                    Inspect around the base of each telescope for obstructions 
                                     <div class="material-switch pull-right">
                                         <input id="90minT4base" name="90minT4base" type="checkbox"/>
                                         <label for="90minT4base" value="90minT4base" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the blue lanyard on the left side of the elevation deck is vertical and appears to be secure between the horizontal metal loops 
+                                    Blue lanyard on the elevation deck is vertical and secure between horizontal metal loops
                                     <div class="material-switch pull-right">
                                         <input id="90minT4lanyard" name="90minT4lanyard" type="checkbox"/>
                                         <label for="90minT4lanyard" value="90minT4lanyard" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the RUN/SAFE switch is at SAFE (down) 
+                                    RUN/SAFE switch is on SAFE (down) 
                                     <div class="material-switch pull-right">
                                         <input id="90minT4runsafe" name="90minT4runsafe" type="checkbox"/>
                                         <label for="90minT4runsafe" value="90minT4runsafe" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the lights inside the positioner pedestal are off
+                                    Lights inside the pedestal are off
                                     <div class="material-switch pull-right">
                                         <input id="90minT4pedlights" name="90minT4pedlights" type="checkbox"/>
                                         <label for="90minT4pedlights" value="90minT4pedlights" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that camera shutters are closed 
+                                    Camera shutters are closed 
                                     <div class="material-switch pull-right">
                                         <input id="90minT4shutter" name="90minT4shutter" type="checkbox"/>
                                         <label for="90minT4shutter" value="90minT4shutter" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the safety bar on the platform is not in the way of the quad arms, remove if necessary 
+                                    Safety bar on the platform off, remove if necessary 
                                     <div class="material-switch pull-right">
                                         <input id="90minT4safetybar" name="90minT4safetybar" type="checkbox"/>
                                         <label for="90minT4safetybar" value="90minT4safetybar" class="label-success"></label>
@@ -572,28 +545,28 @@ $(document).ready(function()
                         <ul class="list-group">
 
                                 <li class="list-group-item">
-                                    Key on the HV supplies (2 crates) to LOCAL
+                                    <span class="glyphicon glyphicon-flash"></span> Key on the HV supplies (2 crates) to LOCAL
                                     <div class="material-switch pull-right">
                                         <input id="90minT4hvcrates" name="90minT4hvcrates" type="checkbox"/>
                                         <label for="90minT4hvcrates" value="90minT4hvcrates" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Check that the front and back FADC rack doors are latched closed
+                                    Front and back FADC rack doors are closed
                                     <div class="material-switch pull-right">
                                         <input id="90minT4fadcdoors" name="90minT4fadcdoors" type="checkbox"/>
                                         <label for="90minT4fadcdoors" value="90minT4fadcdoors" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Switch on the chiller - ENABLE system and ENABLE comp. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller>details</a>) 
+                                    <span class="glyphicon glyphicon-flash"></span> Switch on the chiller - ENABLE system and ENABLE comp. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller>details</a>) 
                                     <div class="material-switch pull-right">
                                         <input id="90minT4chiller" name="90minT4chiller" type="checkbox"/>
                                         <label for="90minT4chiller" value="90minT4chiller" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                    Turn the trailer AC to 57 ºF (<a href="" data-toggle="modal" data-target="#test">details</a>)
+                                    <span class="glyphicon glyphicon-flash"></span> Turn the trailer AC to 57 ºF (<a href="" data-toggle="modal" data-target="#test">details</a>)
                                     <div class="material-switch pull-right">
                                         <input id="90minT4ac" name="90minT4ac" type="checkbox"/>
                                         <label for="90minT4ac" value="90minT4ac" class="label-success"></label>
@@ -634,14 +607,14 @@ $(document).ready(function()
                                 <ul class="list-group" id="90minhardwareshed">
 
                                 <li class="list-group-item">
-                                	Remove <a href="" data-toggle="modal" data-target="#T0Radio">the cap</a> from IR radiometer (on staircase)
+                                	<span class="glyphicon glyphicon-flash"></span> Remove <a href="" data-toggle="modal" data-target="#T0Radio">the cap</a> from IR radiometer (on staircase)
                                     <div class="material-switch pull-right">
                                 	    <input id="90minHardwareShedradiocap" name="90minHardwareShedradiocap" type="checkbox" />
                                 	    <label for="90minHardwareShedradiocap" value="90minHardwareShedradiocap" class="label-success"></label>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
-                                	Turn on the radiometer - switch on the power strip inside <a href="" data-toggle="modal" data-target="#T0Radio">the box</a> on the staircase. 
+                                	<span class="glyphicon glyphicon-flash"></span> Turn on the radiometer - switch on the power strip inside <a href="" data-toggle="modal" data-target="#T0Radio">the box</a> on the staircase. 
 <!-- (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers>details</a>) -->
                                     <div class="material-switch pull-right">
                                 	    <input id="90minHardwareShedradioOn" name="90minHardwareShedradioOn" type="checkbox"/>
@@ -789,7 +762,7 @@ $(document).ready(function()
                                 <ul class="list-group" id="75mincontrol04">
 				                
                                 <li class="list-group-item"> 
-                                        Launch Tracking: click the <font color=green>TRK</font> icon (or <code>startTRK.pl –a</code>), check to see that telescopes are in Array Mode. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Serial_Tracking_(PCS)#Array_interface>details</a>)
+                                        Launch Tracking: click the <font color=lightgreen>TRK</font> icon (or <code>startTRK.pl –a</code>), check to see that telescopes are in Array Mode. (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Serial_Tracking_(PCS)#Array_interface>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="75minlaunchtrk" name="75minlaunchtrk" type="checkbox" />
                                         <label for="75minlaunchtrk" value="75minlaunchtrk" class="label-success" ></label>
@@ -962,28 +935,28 @@ $(document).ready(function()
                                 <ul class="list-group" id="45mintrailers">
 				                
                                 <li class="list-group-item"> 
-                                        Turn T1 preamp ON. Verify that it is delivering ~350W (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Activate_Preamplifiers>details</a>)</label>
+                                        <span class="glyphicon glyphicon-flash"></span> Turn T1 preamp ON. Verify that it is delivering ~350W (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Activate_Preamplifiers>details</a>)</label>
                                 <div class="material-switch pull-right">
                                         <input id="45minT1preampOn" name="45minT1preampOn" type="checkbox" />
                                         <label for="45minT1preampOn" value="45minT1preampOn" class="label-success"></label>
                                 </div>
                                 </li>
                                 <li class="list-group-item"> 
-                                        Turn T2 preamp ON. Verify that it is delivering ~350W (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Activate_Preamplifiers>details</a>)</label>
+                                        <span class="glyphicon glyphicon-flash"></span> Turn T2 preamp ON. Verify that it is delivering ~350W (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Activate_Preamplifiers>details</a>)</label>
                                 <div class="material-switch pull-right">
                                         <input id="45minT2preampOn" name="45minT2preampOn" type="checkbox" />
                                         <label for="45minT2preampOn"  value="45minT2preampOn" class="label-success"></label>
                                 </div>
                                 </li>
                                 <li class="list-group-item"> 
-                                        Turn T3 preamp ON. Verify that it is delivering ~350W (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Activate_Preamplifiers>details</a>)</label>
+                                        <span class="glyphicon glyphicon-flash"></span> Turn T3 preamp ON. Verify that it is delivering ~350W (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Activate_Preamplifiers>details</a>)</label>
                                 <div class="material-switch pull-right">
                                         <input id="45minT3preampOn" name="45minT3preampOn" type="checkbox"/>
                                         <label for="45minT3preampOn" value="45minT3preampOn" class="label-success"> </label>
                                 </div>
                                 </li>
                                 <li class="list-group-item"> 
-                                        Turn T4 preamp ON. Verify that it is delivering ~350W (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Activate_Preamplifiers>details</a>)</label>
+                                        <span class="glyphicon glyphicon-flash"></span> Turn T4 preamp ON. Verify that it is delivering ~350W (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Activate_Preamplifiers>details</a>)</label>
                                 <div class="material-switch pull-right">
                                         <input id="45minT4preampOn" name="45minT4preampOn" type="checkbox" />
                                         <label for="45minT4preampOn" value="45minT4preampOn" class="label-success"></label>
@@ -1117,7 +1090,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Turn on shutter power and open the shutter using the remote control (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter>details</a>)
+                                        <span class="glyphicon glyphicon-flash"></span> Turn on shutter power and open the shutter using the remote control (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="20minT1openshutter" name="20minT1openshutter" type="checkbox"/>
                                         <label for="20minT1openshutter" value="20minT1openshutter" class="label-success"></label>
@@ -1131,7 +1104,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Turn off all the lights in the trailer
+                                        All lights in the trailer are off
                                 <div class="material-switch pull-right">
                                         <input id="20minT1trailerlightsoff" name="20minT1trailerlightsoff" type="checkbox"/>
                                         <label for="20minT1trailerlightsoff" value="20minT1trailerlightsoff" class="label-success"></label>
@@ -1145,7 +1118,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Flip the RUN/SAFE switch on positioner to “RUN” (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking>details</a>)
+                                        <span class="glyphicon glyphicon-flash"></span> Flip the RUN/SAFE switch on positioner to “RUN” (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="20minT1run" name="20minT1run" type="checkbox"/>
                                         <label for="20minT1run" value="20minT1run" class="label-success"></label>
@@ -1176,7 +1149,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Turn on shutter power and open the shutter using the remote control (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter>details</a>)
+                                        <span class="glyphicon glyphicon-flash"></span> Turn on shutter power and open the shutter using the remote control (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="20minT2openshutter" name="20minT2openshutter" type="checkbox"/>
                                         <label for="20minT2openshutter" value="20minT2openshutter" class="label-success"></label>
@@ -1190,7 +1163,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Turn off all the lights in the trailer
+                                        All lights in the trailer are off
                                 <div class="material-switch pull-right">
                                         <input id="20minT2trailerlightsoff" name="20minT2trailerlightsoff" type="checkbox"/>
                                         <label for="20minT2trailerlightsoff" value="20minT2trailerlightsoff" class="label-success"></label>
@@ -1204,7 +1177,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Flip the RUN/SAFE switch on positioner to “RUN” (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking>details</a>)
+                                        <span class="glyphicon glyphicon-flash"></span> Flip the RUN/SAFE switch on positioner to “RUN” (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="20minT2run" name="20minT2run" type="checkbox"/>
                                         <label for="20minT2run" value="20minT2run" class="label-success"></label>
@@ -1235,7 +1208,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Turn on shutter power and open the shutter using the remote control (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter>details</a>)
+                                        <span class="glyphicon glyphicon-flash"></span> Turn on shutter power and open the shutter using the remote control (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="20minT3openshutter" name="20minT3openshutter" type="checkbox"/>
                                         <label for="20minT3openshutter" value="20minT3openshutter" class="label-success"></label>
@@ -1249,7 +1222,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Turn off all the lights in the trailer
+                                        All lights in the trailer are off
                                 <div class="material-switch pull-right">
                                         <input id="20minT3trailerlightsoff" name="20minT3trailerlightsoff" type="checkbox"/>
                                         <label for="20minT3trailerlightsoff" value="20minT3trailerlightsoff" class="label-success"></label>
@@ -1263,7 +1236,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Flip the RUN/SAFE switch on positioner to “RUN” (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking>details</a>)
+                                        <span class="glyphicon glyphicon-flash"></span> Flip the RUN/SAFE switch on positioner to “RUN” (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="20minT3run" name="20minT3run" type="checkbox"/>
                                         <label for="20minT3run" value="20minT3run" class="label-success"></label>
@@ -1294,7 +1267,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Turn on shutter power and open the shutter using the remote control (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter>details</a>)
+                                        <span class="glyphicon glyphicon-flash"></span> Turn on shutter power and open the shutter using the remote control (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="20minT4openshutter" name="20minT4openshutter" type="checkbox"/>
                                         <label for="20minT4openshutter" value="20minT4openshutter" class="label-success"></label>
@@ -1308,7 +1281,7 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Turn off all the lights in the trailer
+                                        All lights in the trailer are off
                                 <div class="material-switch pull-right">
                                         <input id="20minT4trailerlightsoff" name="20minT4trailerlightsoff" type="checkbox"/>
                                         <label for="20minT4trailerlightsoff" value="20minT4trailerlightsoff" class="label-success"></label>
@@ -1322,14 +1295,14 @@ $(document).ready(function()
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        Flip the RUN/SAFE switch on positioner to “RUN” (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking>details</a>)
+                                        <span class="glyphicon glyphicon-flash"></span> Flip the RUN/SAFE switch on positioner to “RUN” (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="20minT4run" name="20minT4run" type="checkbox"/>
                                         <label for="20minT4run" value="20minT4run" class="label-success"></label>
                                 </div>
                                 </li>
                                 <li class="list-group-item">
-                                        After sunset, open the cover for the allsky cloud monitor at T0 (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Allsky_Cloud_Monitor>details</a>)
+                                        <span class="glyphicon glyphicon-flash"></span> After sunset, open the cover for the allsky cloud monitor at T0 (<a href=https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Allsky_Cloud_Monitor>details</a>)
                                 <div class="material-switch pull-right">
                                         <input id="20minT4openallsky" name="20minT4openallsky" type="checkbox" />
                                         <label for="20minT4openallsky" value="20minT4openallsky" class="label-success"></label>
@@ -1341,6 +1314,8 @@ $(document).ready(function()
                        </div>
                   </div>
 </div>	
+				<br>
+				<br>
 				<br>
 				<br>
 				<br>
@@ -1462,7 +1437,7 @@ $(document).ready(function()
 </div>
 </form>
 
-<nav class="navbar navbar-fixed-bottom" role="navigation">
+<nav class="navbar navbar-fixed-bottom hidden-sm hidden-xs" role="navigation" id="navprogress">
 <div class="container-fluid"> 
 
     <div class="col-xs-9 text-center" id="pbdiv">
@@ -1579,7 +1554,6 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-<script src="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/updateBar.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script type="text/javascript" src="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/kinetic.js"></script>
 <script type="text/javascript" src="http://homepages.spa.umn.edu/~shahin/checklists/app/templates/jquery.final-countdown.js"></script>
@@ -1634,11 +1608,37 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
     var session;
     $(document).ready(function(){
 
+        $('body').scrollspy({ target: '#navtop' });
+
+
         //Creates comment boxes for each checkbox, which will trigger modals
         $('.list-group-item div input').each(function(){
             commentButton = $('<button />').addClass('commentButton btn btn-primary btn-xs glyphicon glyphicon glyphicon-comment').attr("type","button").attr("data-toggle", "modal").attr("data-target", "#commentModal").attr("data-boxname",this.id);
             $(this).parent().parent().append(commentButton);
             });
+
+// This is to fade out navbar
+    // fade in .navbar
+    var lastScrollTop = 0;
+    $(function () {
+        $(window).scroll(function (event) {
+
+                 // set distance user needs to scroll before we start fadeIn
+            var st = $(this).scrollTop();
+            if (st - lastScrollTop > 10 ){
+                $('#navtop').fadeOut(1000);
+
+            //if ($(this).scrollTop() < 100) {
+                } else { if (lastScrollTop - st > 10){
+                    $('#navtop').fadeIn(500);
+                }
+            }
+            lastScrollTop = st;
+        });
+
+
+    });
+
 
         socket = io.connect('http://' + document.domain + ':' + location.port + '/');
         socket.on('connect', function() {
@@ -1657,12 +1657,10 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
             //width = parseFloat($("#progress-bar").attr("aria-valuenow"));
                 width = document.querySelectorAll('input[type="checkbox"]:checked').length * 100./126.;
             if(this.checked){
-                socket.emit('check',{msg: text});
-              //  width += 100./126.;
+                socket.emit('check',{msg: text, action: "check"});
             }
             else{
-                socket.emit('uncheck',{msg: text});
-             //   width -= 100./126.;
+                socket.emit('uncheck',{msg: text, action: "uncheck"});
             }
             
             socket.emit('updatebars',{bar: width});
@@ -1795,6 +1793,21 @@ function toggleFullscreen(elem) {
 $("#fullscreenbtn").click(function() {
   toggleFullscreen();
 });
+
+
+$('.navbar-collapse').click('li', function(){
+            $('.navbar-collapse').collapse('hide');
+    });
+
+
+    $('#reset').click(function (){
+      $("#progress-bar")
+      .css("width", "0%")
+      .attr("aria-valuenow", '0')
+      .text("0%");
+
+      $(':checkbox').prop('checked',false).change();
+    })
 
 
     });
