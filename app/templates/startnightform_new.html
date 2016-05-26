@@ -136,6 +136,20 @@ $(document).ready(function()
 
                             <li class="list-group-item">
                                     Inspect around the base of each telescope for obstructions
+                                    <!--
+                                    <div class="material-switch pull-right">
+                                        <input id="90minT4base" name="90minT4base" type="checkbox"/>
+                                        <label for="90minT4base" value="90minT4base" class="label-success"></label>
+                                    </div>
+                                    <div class="material-switch pull-right">
+                                        <input id="90minT3base" name="90minT3base" type="checkbox"/>
+                                        <label for="90minT3base" value="90minT3base" class="label-success"></label>
+                                    </div>
+                                    <div class="material-switch pull-right">
+                                        <input id="90minT2base" name="90minT2base" type="checkbox"/>
+                                        <label for="90minT2base" value="90minT2base" class="label-success"></label>
+                                    </div>
+                                    -->
                                     <div class="material-switch pull-right">
                                         <input id="90minT1base" name="90minT1base" type="checkbox"/>
                                         <label for="90minT1base" value="90minT1base" class="label-success"></label>
@@ -1660,7 +1674,7 @@ Each telescope has a dehumidifier behind the FADC racks. Check to see that it is
                 socket.emit('check',{msg: text, action: "check"});
             }
             else{
-                socket.emit('uncheck',{msg: text, action: "uncheck"});
+                socket.emit('check',{msg: text, action: "uncheck"});
             }
             
             socket.emit('updatebars',{bar: width});

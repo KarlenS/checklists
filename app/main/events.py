@@ -44,7 +44,6 @@ def check(message):
 
 #    db = Mdb()
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False, "session": date, "comment": ""})
-    print "EMITTING check for",sendID, room
 
 #@socketio.on('uncheck', namespace='/')
 #def uncheck(message):
@@ -57,7 +56,6 @@ def check(message):
 
 #    db = Mdb()
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False,  "session": date, "comment": ""})
-    print "EMITTING uncheck for", sendID, room
 
 
 @socketio.on('deletecomment', namespace='/')
@@ -69,7 +67,6 @@ def deletecomment(message):
     commentid = message['comID']
     box = message['id']
     db.deleteComment(box,date,observer,commentid)
-    print "TOLD TO DELETE",commentid
 
 @socketio.on('comment', namespace='/')
 def comment(message):
@@ -88,7 +85,6 @@ def comment(message):
     dbcomment = db.getComment(message['id'],date)
     sendcomment = dbcomment['comment']
     sortedkeys = sorted(sendcomment)
-    print "DB COMMENT:",sendcomment
     emit('comments',{'id':message['id'],'msg':sendcomment,'keys':sortedkeys},room=room)
 
 #    db = Mdb()
@@ -102,7 +98,6 @@ def updatebar(message):
     room = session.get('date')
     sendBar = message['bar']
     emit('pbars', {'bar': sendBar}, room=room)
-    print "EMITTING new bar value for", sendBar, room
 
 @socketio.on('updatebare', namespace='/')
 def updatebar(message):
@@ -111,7 +106,6 @@ def updatebar(message):
     room = session.get('date')
     sendBar = message['bar']
     emit('pbare', {'bar': sendBar}, room=room)
-    print "EMITTING new bar value for", sendBar, room
 
 
 @socketio.on('left', namespace='/')
