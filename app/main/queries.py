@@ -9,7 +9,7 @@ class Mdb(object):
     def __init__(self,observer="admin"):
         self.client = pymysql.connect(host='localhost',
                                      user='root',
-                                     password='password',
+                                     password='MH!kbsh85aaat',
                                      db='checklist',
                                      charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
@@ -25,7 +25,8 @@ class Mdb(object):
         """takes the session/date and returns all documents for that session.
         If no documents exist for that session, ues cloneMdbTemplate to create
         documents corresponding to a new session with the current observer"""
-        sql = "SELECT `*` FROM `%s`" %(session) #normal-ass mysql query, where %s will get inputted in the next line
+        sql = "SELECT * FROM `%s`" %(session) #normal-ass mysql query, where %s will get inputted in the next line
+        #sql = "SELECT `*` FROM `%s`" %(session) #normal-ass mysql query, where %s will get inputted in the next line
 
         with self.client.cursor() as cursor:
             try:
