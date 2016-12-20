@@ -1,0 +1,9 @@
+app/__init__.pyc
+app/main/__init__.pyc
+app/main/events.pyc
+app/main/forms.pyc
+app/main/queries.pyc
+app/main/routes.pyc
+mongo_to_mysql_import.py
+nulltemplate.msql
+templatetable.msql
