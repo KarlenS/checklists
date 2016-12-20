@@ -15,7 +15,8 @@ RUN mkdir -p /data/db /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
-EXPOSE 27017
+EXPOSE 3306
+#EXPOSE 27017
 
 #ENTRYPOINT ["/usr/bin/mongod"]
 

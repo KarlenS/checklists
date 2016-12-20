@@ -6,6 +6,7 @@ from .. import socketio
 import datetime
 from time import sleep
 
+
 db = Mdb()
 
 @socketio.on('joined', namespace='/')
@@ -13,8 +14,9 @@ def joined(message):
     """Sent by clients when they enter a room.
     A status message is broadcast to all people in the room."""
     date = session.get('date')
-    room = date 
+    room = date
     observer = session.get('name') 
+    db.__init__(observer)
     join_room(room)
     emit('status', {'msg': room}, room=room)
     print "JUST LOADED INTO", room
@@ -37,10 +39,10 @@ def check(message):
 
     if (message['action'] == 'check'):
         emit('message', {'msg': sendID}, room=room)
-        db.updateMdbBox(message['msg'],True,date,observer)
+        db.updateMdbBox(message['msg'],1,date,observer)
     else:
         emit('unmessage', {'msg': sendID}, room=room)
-        db.updateMdbBox(message['msg'],False,date,observer)
+        db.updateMdbBox(message['msg'],0,date,observer)
 
 #    db = Mdb()
     #db.insertMdb({"observer": session.get('name'), "date": datetime.datetime.now(), "box": message['msg'], "state": False, "session": date, "comment": ""})
@@ -66,6 +68,7 @@ def deletecomment(message):
     date = session.get('date')
     commentid = message['comID']
     box = message['id']
+    print "TRYING TO DELETE COMMENT", commentid
     db.deleteComment(box,date,observer,commentid)
 
 @socketio.on('comment', namespace='/')
@@ -82,8 +85,8 @@ def comment(message):
         db.updateMdbComment(message['id'], date, observer, dbmessage)
 
     #sorting the db comments by date
-    dbcomment = db.getComment(message['id'],date)
-    sendcomment = dbcomment['comment']
+    sendcomment = db.getComment(message['id'],date)
+    #sendcomment = dbcomment['comment']
     sortedkeys = sorted(sendcomment)
     emit('comments',{'id':message['id'],'msg':sendcomment,'keys':sortedkeys},room=room)
 
