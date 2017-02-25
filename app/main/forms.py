@@ -1,4 +1,4 @@
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from wtforms.ext.dateutil.fields import DateField
 from wtforms.fields import StringField, SubmitField
 #from wtforms.fields.html5 import DateField

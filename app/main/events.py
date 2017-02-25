@@ -1,5 +1,5 @@
 from flask import session
-from flask.ext.socketio import emit, join_room, leave_room
+from flask_socketio import emit, join_room, leave_room
 from queries import Mdb
 from bson.objectid import ObjectId
 from .. import socketio

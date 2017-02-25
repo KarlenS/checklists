@@ -1,4 +1,3 @@
-#from pymongo import MongoClient
 import pymysql.cursors
 import datetime
 import json
@@ -9,7 +8,7 @@ class Mdb(object):
     def __init__(self,observer="admin"):
         self.client = pymysql.connect(host='localhost',
                                      user='root',
-                                     password='password',
+                                     password='MH!kbsh85aaat',
                                      db='checklist',
                                      charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
