@@ -1,7 +1,6 @@
 from flask import session
 from flask_socketio import emit, join_room, leave_room
 from queries import Mdb
-from bson.objectid import ObjectId
 from .. import socketio
 import datetime
 from time import sleep
