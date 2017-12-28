@@ -8,7 +8,7 @@ class Mdb(object):
     def __init__(self,observer="admin"):
         self.client = pymysql.connect(host='localhost',
                                      user='root',
-                                     password='MH!kbsh85aaat',
+                                     password='temppass',
                                      db='checklist',
                                      charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
